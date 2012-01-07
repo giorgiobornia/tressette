@@ -44,9 +44,13 @@ using namespace fastdelegate;
 
 
 //! class  cImageLinkGfx  
-class DLL_EXPORTIMPORT cImageLinkGfx : cLabelLinkGfx  
+class DLL_EXPORTIMPORT cImageLinkGfx : public cLabelLinkGfx  
 {
+public:
+    cImageLinkGfx();
+    virtual ~cImageLinkGfx();
 
+    virtual void   Draw(SDL_Surface*  pScreen);
 };
 
 #endif

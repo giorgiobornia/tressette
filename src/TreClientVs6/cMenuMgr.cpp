@@ -40,10 +40,12 @@
 #include "lang_gen.h"
 #include "gfx_util.h"
 #include "cLabelLinkGfx.h"
+#include "cImageLinkGfx.h"
 #include "cLabelGfx.h"
 #include "ErrorMsg.h"
 
 static const char* lpszUrlHome = "http://www.invido.it";
+static const char* lpszUrlDonate = "http://sourceforge.net/donate/index.php?group_id=155065";
 static const char* lpszMsgUrl = "Creato da www.invido.it";
 static const char* lpszVersion = "Tressette ver. 0.7.4";
 static const char* lpszIniFontVera = "data/font/vera.ttf"; 
@@ -96,6 +98,7 @@ cMenuMgr::~cMenuMgr()
     }
     delete m_phomeUrl;
     delete m_pLabelVersion;
+    delete m_pdonateUrl;
 }
 
 
@@ -145,6 +148,15 @@ void cMenuMgr::Init(SDL_Surface *s)
     m_phomeUrl->SetState(cLabelLinkGfx::INVISIBLE);
     m_phomeUrl->SetUrl(lpszUrlHome); 
     m_phomeUrl->SetWindowText(lpszMsgUrl);
+
+    // link to donate image
+    m_pdonateUrl = new cImageLinkGfx;
+    m_pdonateUrl->m_fncbClickEvent = MakeDelegate(this, &cMenuMgr::LabelClicked);
+    m_pdonateUrl->Init(&rctBt1, m_pScreen,  m_pfont3, MYIDLABELURL); 
+    m_pdonateUrl->SetState(cLabelLinkGfx::INVISIBLE);
+    m_pdonateUrl->SetUrl(lpszUrlDonate); 
+    m_pdonateUrl->SetWindowText(lpszMsgUrl);
+
     // label version
     m_pLabelVersion = new cLabelGfx;
     rctBt1.h = 28;

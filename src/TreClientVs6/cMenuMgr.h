@@ -41,6 +41,7 @@ class cGameMainGfx;
 class cLanguages;
 class cLabelLinkGfx;
 class cLabelGfx;
+class cImageLinkGfx;
 
 //! class cMenuMgr  
 class cMenuMgr  
@@ -137,6 +138,7 @@ private:
     SDL_Rect         m_rctPanel;
     //! link url
     cLabelLinkGfx*   m_phomeUrl;
+    cImageLinkGfx*   m_pdonateUrl;
     //! mouse position flag
     BOOL             m_bMouseInside;
     //! label version
