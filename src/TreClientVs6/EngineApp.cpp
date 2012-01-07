@@ -133,7 +133,7 @@ cEngineApp::cEngineApp()
     m_pSlash = 0;
     m_pMxAccOptions = 0;
     m_pOptCond = 0;
-	g_MainApp = this;
+    g_MainApp = this;
     m_bOpzWinRunning = FALSE;
     m_pTitleCredits = 0;
     for (int i = 0; i < cEngineApp::NUM_BACKGRIMAGES; i++)
@@ -269,7 +269,7 @@ void cEngineApp::Init()
         sprintf(ErrBuff, "Unable to load font %s, error: %s\n", strFileFontStatus.c_str() , SDL_GetError());
         throw Error::Init(ErrBuff);
     }
-	// font Vera
+    // font Vera
     strFileFontStatus = lpszIniFontVera;
     m_pfontVera = TTF_OpenFont(strFileFontStatus.c_str(), 11);
     if (m_pfontVera == 0)
@@ -412,7 +412,7 @@ void cEngineApp::loadSplash()
         
         SDL_FreeSurface(Temp);
     }
-	
+    
 }
 
 
@@ -422,7 +422,7 @@ void cEngineApp::loadSplash()
 */
 void cEngineApp::drawSplash()
 {
-   	SDL_BlitSurface(m_pSlash, NULL, m_pScreen, NULL);
+    SDL_BlitSurface(m_pSlash, NULL, m_pScreen, NULL);
     //SDL_Flip(m_pScreen);
     FlipScreen(m_pScreen);
 }
@@ -510,10 +510,10 @@ void cEngineApp::MainLoop()
     // set background of menu
     m_pMenuMgr->SetBackground(m_pSlash);
     
-   	
+    
     while (!bquit && !m_Histmenu.empty()) 
     {
-		switch (m_Histmenu.top()) 
+        switch (m_Histmenu.top()) 
         {
             case cMenuMgr::MENU_ROOT:
                 if (m_pMusicManager && g_Options.All.bMusicOn && !m_pMusicManager->IsPLayingMusic()  )
@@ -557,13 +557,13 @@ void cEngineApp::MainLoop()
                 bquit = true;
                 break;
             
-		}
-	
+        }
+    
         // actualize display
-		//SDL_Flip(m_pScreen);
+        //SDL_Flip(m_pScreen);
         FlipScreen(m_pScreen);
 
-	}
+    }
 }
 
 
@@ -587,7 +587,7 @@ void cEngineApp::PickHelp()
 #ifdef WIN32
     std::string strFileName = lpszHelpFileName;
     STRING strCompleteHelpPath = m_strApplicationDir + "\\" + strFileName;
-	::ShellExecute(NULL, TEXT("open"), strCompleteHelpPath.c_str() , 0, 0, SW_SHOWNORMAL);
+    ::ShellExecute(NULL, TEXT("open"), strCompleteHelpPath.c_str() , 0, 0, SW_SHOWNORMAL);
 #endif
 }
 
@@ -749,7 +749,7 @@ void cEngineApp::showEditUserName()
     
 
     Dlg.Init(&rctWin, m_pScreen, m_pfontVera, m_pfontAriblk);
-	STRING strTmp = m_pLanString->GetStringId(cLanguages::ID_CHOOSENAME);
+    STRING strTmp = m_pLanString->GetStringId(cLanguages::ID_CHOOSENAME);
     Dlg.SetCaption(strTmp); 
     Dlg.Show(m_pSlash);
 
@@ -762,7 +762,7 @@ void cEngineApp::showEditUserName()
 */
 void cEngineApp::ShowOptionsGeneral()
 {
-	OptionGfx Optio;
+    OptionGfx Optio;
 
     SDL_Rect rctOptionWin;
 
@@ -774,7 +774,7 @@ void cEngineApp::ShowOptionsGeneral()
     
 
     Optio.Init(&rctOptionWin, m_pScreen, m_pfontVera, m_pfontAriblk);
-	STRING strTmp = m_pLanString->GetStringId(cLanguages::ID_OPT_CONTRL_GENERAL);
+    STRING strTmp = m_pLanString->GetStringId(cLanguages::ID_OPT_CONTRL_GENERAL);
     Optio.SetCaption(strTmp); 
     Optio.Show(m_pBackgrImg[IMG_BACKGR_FIORE7]);
 
@@ -801,7 +801,7 @@ void cEngineApp::ShowOptionsDeck()
     
 
     Optio.Init(&rctOptionWin, m_pScreen, m_pfontVera, m_pfontAriblk);
-	STRING strTmp = m_pLanString->GetStringId(cLanguages::ID_OPT_CONTRL_DECK);
+    STRING strTmp = m_pLanString->GetStringId(cLanguages::ID_OPT_CONTRL_DECK);
     Optio.SetCaption(strTmp); 
     Optio.Show(m_pSlash);
 
@@ -828,7 +828,7 @@ void cEngineApp::ShowOptionsGame()
     
 
     Optio.Init(&rctOptionWin, m_pScreen, m_pfontVera, m_pfontAriblk);
-	STRING strTmp = m_pLanString->GetStringId(cLanguages::ID_OPT_CONTRL_GAME);
+    STRING strTmp = m_pLanString->GetStringId(cLanguages::ID_OPT_CONTRL_GAME);
     Optio.SetCaption(strTmp); 
     Optio.Show(m_pBackgrImg[IMG_BACKGR_TAVOLINO]);
 

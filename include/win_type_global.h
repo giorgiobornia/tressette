@@ -33,9 +33,9 @@
 #endif
 
 #ifdef TRE_LIBRARY_EXPORT
-	#define DLL_EXPORTIMPORT   __declspec( dllexport )
+    #define DLL_EXPORTIMPORT   __declspec( dllexport )
 #else
-	#define DLL_EXPORTIMPORT   __declspec( dllimport )
+    #define DLL_EXPORTIMPORT   __declspec( dllimport )
 #endif
 
 #ifdef USEDIALOGTRACE
@@ -43,16 +43,16 @@
 #endif
 
 #if _MSC_VER > 1000
-	#pragma warning( disable: 4251 )
+    #pragma warning( disable: 4251 )
     #pragma warning(disable:4786)
-	#pragma warning(disable:4996)
+    #pragma warning(disable:4996)
     #include <vector> 
     #include <deque>
     #include <windows.h>
     #include <string>
 #else
-	#include <iostream>
-	#include <vector>
+    #include <iostream>
+    #include <vector>
     #include <deque>
     #include <string>
 #endif
@@ -78,17 +78,17 @@
 #endif
 
 #ifndef STRING 
-	typedef std::string STRING;
+    typedef std::string STRING;
 #endif
 
 #ifndef ASSERT
     #include <assert.h>
     #define ASSERT(f) \
-	assert(f);
+    assert(f);
 #endif
 
 #ifndef CONST
-	#define CONST const 
+    #define CONST const 
 #endif
 
 #ifndef ULONG
@@ -124,16 +124,16 @@
         }
     #else
         // non windows
-		 #include <stdarg.h>
-	    inline void TRACE(const char* fmt, ...)
+         #include <stdarg.h>
+        inline void TRACE(const char* fmt, ...)
         {
-     	    char myBuff[512];
+            char myBuff[512];
             va_list args;
 
             va_start( args, fmt );     /* Initialize variable arguments. */
 
             int result = vsprintf(myBuff, fmt, args); 
-			std::cout << "[TR] " <<myBuff;
+            std::cout << "[TR] " <<myBuff;
         }
     #endif
 #endif

@@ -30,8 +30,10 @@
 //////////////////////////////////////////////////////////////////////
 
 #include "StdAfx.h"
+#include <SDL_image.h>
 #include "cImageLinkGfx.h"
 #include "gfx_util.h"
+#include "ErrorMsg.h"
 
 #ifdef WIN32
 #include "shellapi.h"
@@ -43,22 +45,52 @@
 
 cImageLinkGfx::cImageLinkGfx()
 {
-
+    m_pLinkImage = NULL;
 }
 
 cImageLinkGfx::~cImageLinkGfx()
 {
+    if(m_pLinkImage)
+    {
+        SDL_FreeSurface(m_pLinkImage);
+        m_pLinkImage = NULL;
+    }
+    if(m_pLinkImageOver)
+    {
+        SDL_FreeSurface(m_pLinkImageOver);
+        m_pLinkImageOver = NULL;
+    }
+}
 
+void cImageLinkGfx::Init(SDL_Rect* pRect, SDL_Surface*  pScreen, LPCSTR imageFile, LPCSTR imageFileOver, int iButID)
+{
+    m_rctButt = *pRect;
+    m_pLinkImage = IMG_Load(imageFile);
+    CheckErrorLoadImage(m_pLinkImage, imageFile);
+    m_pLinkImageOver = IMG_Load(imageFileOver);
+    CheckErrorLoadImage(m_pLinkImageOver, imageFileOver);
+
+    m_iButID = iButID;
+}
+
+void cImageLinkGfx::CheckErrorLoadImage(SDL_Surface* pImgSrf, LPCSTR imageFile)
+{
+    if (pImgSrf == 0)
+    {
+        CHAR ErrBuff[512];
+        sprintf(ErrBuff, "Unable to load %s  image\n" , imageFile);
+        throw Error::Init(ErrBuff);
+    }
 }
 
 
-
-void   cImageLinkGfx::Draw(SDL_Surface*  pScreen)
+void cImageLinkGfx::Draw(SDL_Surface*  pScreen)
 {
-    if (m_eState != INVISIBLE)
+    if (m_eState != INVISIBLE && m_pLinkImage != NULL)
     {
         if (m_bIsEnabled)
         {
+            SDL_Surface* psurfImg = m_pLinkImage;
             // begin stuff mouse
             Uint8 state;
             int mx, my;
@@ -67,33 +99,19 @@ void   cImageLinkGfx::Draw(SDL_Surface*  pScreen)
                   my >=  m_rctButt.y  && my <= m_rctButt.y + m_rctButt.h)
             {
                 // mouse on button
-                m_colCurrent = GFX_UTIL_COLOR::Orange;
-            }
-            else
-            {
-                m_colCurrent = GFX_UTIL_COLOR::White;
+                psurfImg = m_pLinkImageOver;
+                
             }
             // end stuff mouse
 
-            int tx, ty;
-	        TTF_SizeText(m_pFontText, m_strButText.c_str(), &tx, &ty);
-            int iXOffSet = (m_rctButt.w - tx)/2 ;
-            if (iXOffSet < 0)
-            {
-                iXOffSet = 1;
-            }
-            int iYOffset = (m_rctButt.h - ty)/2 ;
-
-            iYOffset = 0;
-            iXOffSet = 0;
-            GFX_UTIL::DrawString(pScreen, m_strButText.c_str(), m_rctButt.x + iXOffSet, 
-                                 m_rctButt.y + iYOffset, m_colCurrent, m_pFontText);
+            
+            SDL_BlitSurface(psurfImg, &psurfImg->clip_rect, pScreen, &m_rctButt);
 
             
         }
         else
         {
-            // button disabled 
+            // link disabled 
             // TO DO
         }
     }

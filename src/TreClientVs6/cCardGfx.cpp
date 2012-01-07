@@ -77,17 +77,17 @@ bool cCardGfx::MouseInCard(int xCoord, int yCoord)
 {
     if(State == CSW_ST_INVISIBLE)
     {
-		return false;
+        return false;
     }
 
-	bool bRet = false;
-	
-	if( xCoord >= m_iX  && xCoord <= m_iX + m_iWidth &&   yCoord >= m_iY   && yCoord <= m_iY  + m_iHeight)
+    bool bRet = false;
+    
+    if( xCoord >= m_iX  && xCoord <= m_iX + m_iWidth &&   yCoord >= m_iY   && yCoord <= m_iY  + m_iHeight)
     {
-	    bRet = true;
+        bRet = true;
     }
 
-	return bRet;
+    return bRet;
 }
 
 
@@ -175,34 +175,34 @@ void cCardGfx::CopyButNoPosition(cCardGfx* pModel)
 */
 int cCardGfx::DrawCard(SDL_Surface *s)
 {
-	ASSERT(m_pDeck);
+    ASSERT(m_pDeck);
     ASSERT(s);
     int nCdIndex = cardSpec.GetCardIndex();
 
-	if(nCdIndex < 0) 
+    if(nCdIndex < 0) 
     {
         nCdIndex = 0;
         ASSERT(0);
     }
-	if(nCdIndex > NUM_CARDS_MAZZBRI) 
+    if(nCdIndex > NUM_CARDS_MAZZBRI) 
     {
         nCdIndex = NUM_CARDS_MAZZBRI - 1;
         ASSERT(0)
     }
 
-	int iSegnoIx = nCdIndex / 10;
-	int iCartaIx = nCdIndex % 10;
+    int iSegnoIx = nCdIndex / 10;
+    int iCartaIx = nCdIndex % 10;
 
 
     SDL_Rect SrcCard;
-	SrcCard.x = iSegnoIx * m_iWidth;
+    SrcCard.x = iSegnoIx * m_iWidth;
     SrcCard.y = iCartaIx * m_iHeight;
     SrcCard.w = m_iWidth;
     SrcCard.h = m_iHeight;
 
     SDL_Rect dest;
-	dest.x = m_iX;
-	dest.y = m_iY;
+    dest.x = m_iX;
+    dest.y = m_iY;
 
     if (m_bDrawReversed)
     {
@@ -235,7 +235,7 @@ int cCardGfx::DrawCard(SDL_Surface *s)
         pCard->cardSpec.GetCardIndex() , pCard->cardSpec.GetSuit(), pCard->cardSpec.GetName() ); 
         */
 
-	return SDL_BlitSurface(m_pDeck, &SrcCard, s, &dest);
+    return SDL_BlitSurface(m_pDeck, &SrcCard, s, &dest);
 }
 
 ////////////////////////////////////////
@@ -249,18 +249,18 @@ int cCardGfx::DrawSymbol( SDL_Surface *s)
     ASSERT(m_pSymbols);
 
     int nSymbol = cardSpec.GetSymbol();
-	ASSERT(nSymbol>= 1 && nSymbol <= 3);
+    ASSERT(nSymbol>= 1 && nSymbol <= 3);
 
-	SDL_Rect SrcCard;
-	SrcCard.x = nSymbol * m_iSymbWidth;
+    SDL_Rect SrcCard;
+    SrcCard.x = nSymbol * m_iSymbWidth;
     SrcCard.y = 0;
     SrcCard.w = m_iSymbWidth;
-	SrcCard.h = m_iSmbHeight;
+    SrcCard.h = m_iSmbHeight;
 
 
-	SDL_Rect dest;
-	dest.x = m_iX;
-	dest.y = m_iY;
+    SDL_Rect dest;
+    dest.x = m_iX;
+    dest.y = m_iY;
 
     //GFX_UTIL::DrawStaticSpriteEx(s, SrcCard.x, SrcCard.y, SrcCard.w, SrcCard.h, dest.x, dest.y, m_pSurf_Bar);
     SDL_SetAlpha (m_pSymbols, SDL_SRCALPHA, 120) ;
@@ -275,20 +275,20 @@ int cCardGfx::DrawSymbol( SDL_Surface *s)
 */
 int cCardGfx::DrawCardBack( SDL_Surface *s)
 {
-	ASSERT(s);
+    ASSERT(s);
     ASSERT(m_pSymbols);
-	SDL_Rect dest;
-	dest.x = m_iX;
-	dest.y = m_iY;
+    SDL_Rect dest;
+    dest.x = m_iX;
+    dest.y = m_iY;
 
     SDL_Rect SrcCard;
-	SrcCard.x = 0;
+    SrcCard.x = 0;
     SrcCard.y = 0;
     SrcCard.w = m_iSymbWidth;
-	SrcCard.h = m_iSmbHeight;
+    SrcCard.h = m_iSmbHeight;
 
     SDL_SetAlpha (m_pSymbols, SDL_SRCALPHA, 255) ;
-	return SDL_BlitSurface(m_pSymbols, &SrcCard, s, &dest);
+    return SDL_BlitSurface(m_pSymbols, &SrcCard, s, &dest);
 }
 
 

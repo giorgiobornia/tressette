@@ -123,7 +123,7 @@ void fnEffectTer(int iCh)
 */
 cGameMainGfx::cGameMainGfx(cEngineApp*  pApp)
 {
-	m_pScene_background = 0;
+    m_pScene_background = 0;
     m_pFontText = 0;
     m_pSurf_Bar = 0;
     m_pApp = pApp;
@@ -133,7 +133,7 @@ cGameMainGfx::cGameMainGfx(cEngineApp*  pApp)
     m_iSymbolHeigth	=	144;
     m_pDeck = 0;
     m_pSymbols = 0;
-	m_pSmallSymbols = 0;
+    m_pSmallSymbols = 0;
     m_pFontStatus = 0;
     m_pDeckType = 0;
 
@@ -144,7 +144,7 @@ cGameMainGfx::cGameMainGfx(cEngineApp*  pApp)
     m_pMatchPoints = 0;
     m_pCoreEngine = 0;
     m_bPlayerCanPlay = FALSE;
-	m_iPlayerThatHaveMarkup = 0;
+    m_iPlayerThatHaveMarkup = 0;
     for (int j = 0; j < NUMOFBUTTON; j++)
     {
         m_pbtArrayCmd[0] = 0;
@@ -179,7 +179,7 @@ cGameMainGfx::~cGameMainGfx()
 */
 void cGameMainGfx::Initialize(SDL_Surface *s)
 {
-  	m_pScreen = s;
+    m_pScreen = s;
 
     CHAR ErrBuff[512];
 
@@ -193,7 +193,7 @@ void cGameMainGfx::Initialize(SDL_Surface *s)
 
     std::string strFileName;
 
-   	// load background
+    // load background
     if (g_Options.All.bFotoBack)
     {
         SDL_Surface *Temp;
@@ -221,7 +221,7 @@ void cGameMainGfx::Initialize(SDL_Surface *s)
         m_pScene_background = SDL_CreateRGBSurface(SDL_SWSURFACE, m_pScreen->w, m_pScreen->h, 32, 0, 0, 0, 0);
         SDL_FillRect(m_pScene_background, NULL, SDL_MapRGBA(m_pScreen->format, 0, 80, 0, 0));
     }
-	
+    
 
     // create stack regions
     createRegionsInit();
@@ -312,7 +312,7 @@ void cGameMainGfx::Initialize(SDL_Surface *s)
         {
             destWIN.x = (m_pScreen->w - m_pAnImages[IMG_BALLOON]->w) / 2 - 10;
             //destWIN.y = 450;
-			destWIN.y = m_pScreen->h - m_pAnImages[IMG_BALLOON]->h - 40;
+            destWIN.y = m_pScreen->h - m_pAnImages[IMG_BALLOON]->h - 40;
             // first make init
             m_pbalGfx[i]->Init(destWIN, m_pAnImages[IMG_BALLOON], m_pFontStatus);
             // setstyle comes after init
@@ -322,7 +322,7 @@ void cGameMainGfx::Initialize(SDL_Surface *s)
         {
             destWIN.x = m_pScreen->w - m_pAnImages[IMG_BALLOON]->w - 10;
             //destWIN.y = 250;
-			destWIN.y = (m_pScreen->h - m_pAnImages[IMG_BALLOON]->h)/2 - 20;
+            destWIN.y = (m_pScreen->h - m_pAnImages[IMG_BALLOON]->h)/2 - 20;
             // first make init
             m_pbalGfx[i]->Init(destWIN, m_pAnImages[IMG_BALLOON], m_pFontStatus);
             // setstyle comes after init
@@ -331,9 +331,9 @@ void cGameMainGfx::Initialize(SDL_Surface *s)
         else if (i == PLAYER3) // socio
         {
             //destWIN.x = 320;
-			destWIN.x = (m_pScreen->w - m_pAnImages[IMG_BALLOON]->w) / 2 - 20;
+            destWIN.x = (m_pScreen->w - m_pAnImages[IMG_BALLOON]->w) / 2 - 20;
             //destWIN.y = 100;
-			destWIN.y = m_pAnImages[IMG_BALLOON]->h + 5;
+            destWIN.y = m_pAnImages[IMG_BALLOON]->h + 5;
             // first make init
             m_pbalGfx[i]->Init(destWIN, m_pAnImages[IMG_BALLOON], m_pFontStatus);
             // setstyle comes after init
@@ -343,7 +343,7 @@ void cGameMainGfx::Initialize(SDL_Surface *s)
         {
             destWIN.x = 20;
             //destWIN.y = 250;
-			destWIN.y = (m_pScreen->h - m_pAnImages[IMG_BALLOON]->h)/2 - 20;
+            destWIN.y = (m_pScreen->h - m_pAnImages[IMG_BALLOON]->h)/2 - 20;
             // first make init
             m_pbalGfx[i]->Init(destWIN, m_pAnImages[IMG_BALLOON], m_pFontStatus);
             // setstyle comes after init
@@ -440,10 +440,10 @@ int cGameMainGfx::loadCardPac()
     }
 
     m_pDeck = s;
-	m_iCardWidth = w/4;
+    m_iCardWidth = w/4;
     m_iCardHeight = h/10;
 
-	return 0;
+    return 0;
 }
 
 
@@ -457,7 +457,7 @@ void cGameMainGfx::Dispose()
     m_pCoreEngine = 0;
     delete m_pDeckType;
     m_pDeckType = 0;
-	int i;
+    int i;
     for (i = 0; i < NUMOFBUTTON; i++)
     {
         delete m_pbtArrayCmd[i];
@@ -471,7 +471,7 @@ void cGameMainGfx::Dispose()
 
     if (m_pScene_background)
     {
-	    SDL_FreeSurface(m_pScene_background); 
+        SDL_FreeSurface(m_pScene_background); 
         m_pScene_background = NULL;
     }
 
@@ -683,7 +683,7 @@ int cGameMainGfx::initDeck()
     // load deck from pac file
     if(m_pDeck == NULL)	
     {
-	    loadCardPac();
+        loadCardPac();
         m_eCurrentDeckType = m_pDeckType->GetType();
     }
     else if (m_eCurrentDeckType != m_pDeckType->GetType())
@@ -695,42 +695,42 @@ int cGameMainGfx::initDeck()
     
 
     // use assert because if loadCardPac failed an exception is thrown
-	ASSERT(m_pDeck)											
-	
-    m_SrcBack.x = 0;
-	m_SrcBack.y = 0;
-	
-	m_SrcCard.y = 0;
- 	m_SrcCard.w = m_iCardWidth;
- 	m_SrcCard.h = m_iCardHeight;
+    ASSERT(m_pDeck)											
     
-	// symbols
-	
+    m_SrcBack.x = 0;
+    m_SrcBack.y = 0;
+    
+    m_SrcCard.y = 0;
+    m_SrcCard.w = m_iCardWidth;
+    m_SrcCard.h = m_iCardHeight;
+    
+    // symbols
+    
     std::string strFileSymbName = lpszMazziDir;
     strFileSymbName += m_pDeckType->GetSymbolFileName();
 
-	std::string strFileSymbSmallName = lpszMazziDir;
-	strFileSymbSmallName += "symb_336_small.bmp";
+    std::string strFileSymbSmallName = lpszMazziDir;
+    strFileSymbSmallName += "symb_336_small.bmp";
 
     if (m_pSymbols)
     {
         SDL_FreeSurface(m_pSymbols);
     }
-	if(m_pSmallSymbols)
-	{
-		SDL_FreeSurface(m_pSmallSymbols);
-	}
+    if(m_pSmallSymbols)
+    {
+        SDL_FreeSurface(m_pSmallSymbols);
+    }
 
-	m_pSmallSymbols = SDL_LoadBMP(strFileSymbSmallName.c_str() );
-	if (m_pSmallSymbols == 0)
+    m_pSmallSymbols = SDL_LoadBMP(strFileSymbSmallName.c_str() );
+    if (m_pSmallSymbols == 0)
     {
         CHAR ErrBuff[512];
         sprintf(ErrBuff, "Error on load small symbols %s" , strFileSymbSmallName.c_str());
         throw Error::Init(ErrBuff);  
     }
-	SDL_SetColorKey(m_pSmallSymbols, SDL_SRCCOLORKEY, SDL_MapRGB(m_pSmallSymbols->format, 242, 30, 206));	
+    SDL_SetColorKey(m_pSmallSymbols, SDL_SRCCOLORKEY, SDL_MapRGB(m_pSmallSymbols->format, 242, 30, 206));	
 
-	m_pSymbols = SDL_LoadBMP(strFileSymbName.c_str() );
+    m_pSymbols = SDL_LoadBMP(strFileSymbName.c_str() );
     if (m_pSymbols == 0)
     {
         CHAR ErrBuff[512];
@@ -740,21 +740,21 @@ int cGameMainGfx::initDeck()
         
     if ( m_pDeckType->GetSymbolFileName() == "symb_336.bmp" )
     {
-	    SDL_SetColorKey(m_pSymbols, SDL_SRCCOLORKEY, SDL_MapRGB(m_pSymbols->format, 242, 30, 206));	
+        SDL_SetColorKey(m_pSymbols, SDL_SRCCOLORKEY, SDL_MapRGB(m_pSymbols->format, 242, 30, 206));	
     }
     else
     {
         SDL_SetColorKey(m_pSymbols, SDL_SRCCOLORKEY|SDL_RLEACCEL, SDL_MapRGB(m_pSymbols->format, 0, 128, 0));
     }
 
-	m_iSymbolSmallWidth = m_pSmallSymbols->w/4;
-	m_iSymbolSmallHeigth = m_pSmallSymbols->h;
+    m_iSymbolSmallWidth = m_pSmallSymbols->w/4;
+    m_iSymbolSmallHeigth = m_pSmallSymbols->h;
 
     m_iSymbolWidth = m_pSymbols->w/4;
     m_iSymbolHeigth = m_pSymbols->h;
 
     m_SrcBack.w = m_iSymbolWidth;
-	m_SrcBack.h = m_iSymbolHeigth;
+    m_SrcBack.h = m_iSymbolHeigth;
 
     // black bar surface
     if (m_pSurf_Bar)
@@ -765,7 +765,7 @@ int cGameMainGfx::initDeck()
     SDL_FillRect(m_pSurf_Bar, NULL, SDL_MapRGBA(m_pScreen->format, 0, 0, 0, 0));
     SDL_SetAlpha(m_pSurf_Bar, SDL_SRCALPHA, 127);
 
-	return 0;
+    return 0;
 }
 
 ////////////////////////////////////////
@@ -776,16 +776,16 @@ void cGameMainGfx::createRegionsInit()
 {
     // opponent cards on right site
     int i;
-	
+    
     for( i = 0; i < NUM_CARDS_HAND; i++)
     {
         m_aOpponentCards[0][i].m_iX = m_pScreen->w - m_iCardWidth - 10;
         m_aOpponentCards[0][i].m_iY  = 70 + i * 15;
 
         m_aOpponentCards[0][i].SetDeckSurface(m_pDeck, m_iCardWidth, m_iCardHeight);
-		m_aOpponentCards[0][i].SetSymbSurf(m_pSmallSymbols, m_iSymbolSmallWidth, m_iSymbolSmallHeigth);
-		
-		m_aOpponentCards[0][i].State =  cCardGfx::CSW_ST_BACK;
+        m_aOpponentCards[0][i].SetSymbSurf(m_pSmallSymbols, m_iSymbolSmallWidth, m_iSymbolSmallHeigth);
+        
+        m_aOpponentCards[0][i].State =  cCardGfx::CSW_ST_BACK;
     }
 
     // partner
@@ -795,10 +795,10 @@ void cGameMainGfx::createRegionsInit()
         m_aOpponentCards[1][i].m_iX = 15 * i + iInitialX;
         m_aOpponentCards[1][i].m_iY  = 10;
         
-		m_aOpponentCards[1][i].SetDeckSurface(m_pDeck, m_iCardWidth, m_iCardHeight);
+        m_aOpponentCards[1][i].SetDeckSurface(m_pDeck, m_iCardWidth, m_iCardHeight);
         m_aOpponentCards[1][i].SetSymbSurf(m_pSmallSymbols, m_iSymbolSmallWidth, m_iSymbolSmallHeigth);
-		
-		m_aOpponentCards[1][i].State =  cCardGfx::CSW_ST_BACK;
+        
+        m_aOpponentCards[1][i].State =  cCardGfx::CSW_ST_BACK;
     }
 
     // opponent on the left site
@@ -807,20 +807,20 @@ void cGameMainGfx::createRegionsInit()
         m_aOpponentCards[2][i].m_iX =  10;
         m_aOpponentCards[2][i].m_iY  = 70 + i * 15;
         
-		m_aOpponentCards[2][i].SetDeckSurface(m_pDeck, m_iCardWidth, m_iCardHeight);
+        m_aOpponentCards[2][i].SetDeckSurface(m_pDeck, m_iCardWidth, m_iCardHeight);
         m_aOpponentCards[2][i].SetSymbSurf(m_pSmallSymbols, m_iSymbolSmallWidth, m_iSymbolSmallHeigth);
-		
+        
         m_aOpponentCards[2][i].State =  cCardGfx::CSW_ST_BACK;
     }
 
     // cards on player
-	int stepX = (m_iCardWidth * 75)/100;
-	if( m_pScreen->w - (NUM_CARDS_HAND * stepX + m_iCardWidth) <  0)
-	{
-		stepX = (m_pScreen->w - m_iCardWidth) / NUM_CARDS_HAND;
-	}
-	int widthAllCardsPlayer =  NUM_CARDS_HAND * stepX + m_iCardWidth;
-	int initialCardX = (m_pScreen->w - widthAllCardsPlayer) / 2;
+    int stepX = (m_iCardWidth * 75)/100;
+    if( m_pScreen->w - (NUM_CARDS_HAND * stepX + m_iCardWidth) <  0)
+    {
+        stepX = (m_pScreen->w - m_iCardWidth) / NUM_CARDS_HAND;
+    }
+    int widthAllCardsPlayer =  NUM_CARDS_HAND * stepX + m_iCardWidth;
+    int initialCardX = (m_pScreen->w - widthAllCardsPlayer) / 2;
     for(int k = 0; k < NUM_CARDS_HAND; k++)
     {
         m_aPlayerCards[k].m_iX = initialCardX + k * stepX;
@@ -878,9 +878,9 @@ void cGameMainGfx::drawStaticScene()
 {
     //renderChatPlayers();
     if (m_pScene_background)
-	{
+    {
         SDL_BlitSurface(m_pScene_background, NULL, m_pScreen, NULL);
-	}
+    }
 
     
     // render cards in hand
@@ -921,10 +921,10 @@ void cGameMainGfx::drawStaticScene()
         renderCard(pCardGfx); 
     }
 
-	showPlayerMarkup(m_iPlayerThatHaveMarkup);
+    showPlayerMarkup(m_iPlayerThatHaveMarkup);
 
     // shows names
-	int i;
+    int i;
     int iNumPlayers = m_pCoreEngine->GetNumOfPlayers();
     for (i = 0; i < iNumPlayers; i++ )
     {
@@ -944,10 +944,10 @@ void cGameMainGfx::drawStaticScene()
     // ballon
     for (i = 0; i < MAX_NUM_PLAYERS; i++)
     {
-		m_pbalGfx[i]->Draw(m_pScreen); 
+        m_pbalGfx[i]->Draw(m_pScreen); 
     }
  
-	//SDL_Flip(m_pScreen);
+    //SDL_Flip(m_pScreen);
     m_pApp->FlipScreen(m_pScreen); 
 }
 
@@ -989,14 +989,14 @@ void cGameMainGfx::renderChatPlayers()
 {
     //*** begin example font ttf
     char txt_to_render[300];
-	static char un_char = ' ';
-	
-	sprintf(txt_to_render, "%s> %s%", "chagpqdt_nome", "eèàáéúóhallo" );
+    static char un_char = ' ';
+    
+    sprintf(txt_to_render, "%s> %s%", "chagpqdt_nome", "eèàáéúóhallo" );
     // draw background chat
-	GFX_UTIL::DrawStaticSpriteEx(m_pScreen, 0, 0, m_pScreen->w, 28, 0, 20, m_pSurf_Bar);
+    GFX_UTIL::DrawStaticSpriteEx(m_pScreen, 0, 0, m_pScreen->w, 28, 0, 20, m_pSurf_Bar);
 
     GFX_UTIL::DrawString(m_pScreen, txt_to_render, 5, 21, GFX_UTIL_COLOR::White, m_pFontText);
-	GFX_UTIL::DrawStaticLine(m_pScreen, 0, 48, m_pScreen->w, 48, GFX_UTIL_COLOR::Red);
+    GFX_UTIL::DrawStaticLine(m_pScreen, 0, 48, m_pScreen->w, 48, GFX_UTIL_COLOR::Red);
     //SDL_Flip(m_pScreen);
     //*** end font ttf
 }
@@ -1012,14 +1012,14 @@ void cGameMainGfx::renderPlayerName(int iPlayerIx)
     cPlayer* pPlayer = m_pCoreEngine->GetPlayer(iPlayerIx) ;
 
     char txt_to_render[256];
-	static char un_char = ' ';
+    static char un_char = ' ';
 
     int iLenBar = 100;
     int iX3 = 165;
     int iY3 = 25;
 
-	int iX1 = m_pScreen->w - 100;//690;
-	int iY1 = m_pScreen->h - 40; //560;
+    int iX1 = m_pScreen->w - 100;//690;
+    int iY1 = m_pScreen->h - 40; //560;
 
     int iX2 = iX1;
     int iY2 = 30;
@@ -1030,28 +1030,28 @@ void cGameMainGfx::renderPlayerName(int iPlayerIx)
     if (iPlayerIx == PLAYER2)
     {
         // first opponent 
-	    sprintf(txt_to_render, "%s",  pPlayer->GetName() );
+        sprintf(txt_to_render, "%s",  pPlayer->GetName() );
         GFX_UTIL::DrawStaticSpriteEx(m_pScreen, 0, 0, iLenBar, 25, iX2, iY2, m_pSurf_Bar);
         GFX_UTIL::DrawString(m_pScreen, txt_to_render, iX2+5, iY2 + 4, GFX_UTIL_COLOR::White, m_pFontText);
     }
     else if (iPlayerIx == PLAYER1)
     {
         // user
-	    sprintf(txt_to_render, "%s",  pPlayer->GetName() );
+        sprintf(txt_to_render, "%s",  pPlayer->GetName() );
         GFX_UTIL::DrawStaticSpriteEx(m_pScreen, 0, 0, iLenBar, 25, iX1, iY1, m_pSurf_Bar);
         GFX_UTIL::DrawString(m_pScreen, txt_to_render, iX1+5, iY1 + 4, GFX_UTIL_COLOR::Orange , m_pFontText);
     }
     else if (iPlayerIx == PLAYER3)
     {
         // socio
-	    sprintf(txt_to_render, "%s",  pPlayer->GetName() );
+        sprintf(txt_to_render, "%s",  pPlayer->GetName() );
         GFX_UTIL::DrawStaticSpriteEx(m_pScreen, 0, 0, iLenBar, 25, iX3, iY3, m_pSurf_Bar);
         GFX_UTIL::DrawString(m_pScreen, txt_to_render, iX3+5, iY3 + 4, GFX_UTIL_COLOR::White, m_pFontText);
     }
     else if (iPlayerIx == PLAYER4)
     {
         // second opponent
-	    sprintf(txt_to_render, "%s",  pPlayer->GetName() );
+        sprintf(txt_to_render, "%s",  pPlayer->GetName() );
         GFX_UTIL::DrawStaticSpriteEx(m_pScreen, 0, 0, iLenBar, 25, iX4, iY4, m_pSurf_Bar);
         GFX_UTIL::DrawString(m_pScreen, txt_to_render, iX4+5, iY4 + 4, GFX_UTIL_COLOR::White, m_pFontText);
     }
@@ -1060,7 +1060,7 @@ void cGameMainGfx::renderPlayerName(int iPlayerIx)
         ASSERT(0);
     }
     
-	//GFX_UTIL::DrawStaticLine(m_pScreen, 0, 48, m_pScreen->w, 48, GFX_UTIL_COLOR::Red);
+    //GFX_UTIL::DrawStaticLine(m_pScreen, 0, 48, m_pScreen->w, 48, GFX_UTIL_COLOR::Red);
     //SDL_Flip(m_pScreen);
     
 }
@@ -1173,7 +1173,7 @@ void cGameMainGfx::animateBeginGiocata()
         
             // new position
             cardTmp[iCardMovingIx].m_iX += cardTmp[iCardMovingIx].m_iVx;
-	        cardTmp[iCardMovingIx].m_iY += cardTmp[iCardMovingIx].m_iVy;
+            cardTmp[iCardMovingIx].m_iY += cardTmp[iCardMovingIx].m_iVy;
         }
         
         // move the cards in the hand
@@ -1185,7 +1185,7 @@ void cGameMainGfx::animateBeginGiocata()
                // stop the animation
                 drawStaticScene();
                 m_DelayAction.CheckPoint(500, cDelayNextAction::CHANGE_AVAIL);
-			    return; 
+                return; 
             }
         }
 
@@ -1216,15 +1216,15 @@ void cGameMainGfx::animateBeginGiocata()
         Uint32 uiNowTime = SDL_GetTicks();
               
         if (uiNowTime < (uiLast_time + uiFrameRate))
-		{
+        {
             int iDelayTime = uiFrameRate - (uiNowTime - uiLast_time);
-			SDL_Delay(iDelayTime);
+            SDL_Delay(iDelayTime);
             TRACE("Delay time %d\n", iDelayTime);
             uiLast_time = uiNowTime;
-		}
+        }
         uiTickTot = uiNowTime - uiInitialTick ;
-	}
-	while(uiTickTot < 3000 && !bEnd); 
+    }
+    while(uiTickTot < 3000 && !bEnd); 
     //while(!bEnd);
 
     // restore begin scene
@@ -1311,15 +1311,15 @@ void cGameMainGfx::animateManoEnd(int iPlayerIx)
     BOOL bPhase1_Y = FALSE;
     BOOL bPhase1_X = FALSE;
     do
-	{
+    {
         // clear screen
         SDL_BlitSurface(pCurrentDisplay, NULL, m_pAlphaDisplay, NULL);
 
         for (int iCardPlayedIndex = 0; iCardPlayedIndex < NUM_CARDS_PLAYED; iCardPlayedIndex++)
         {
             
-	        cardTmp[iCardPlayedIndex].m_iX += cardTmp[iCardPlayedIndex].m_iVx;
-	        cardTmp[iCardPlayedIndex].m_iY += cardTmp[iCardPlayedIndex].m_iVy;
+            cardTmp[iCardPlayedIndex].m_iX += cardTmp[iCardPlayedIndex].m_iVx;
+            cardTmp[iCardPlayedIndex].m_iY += cardTmp[iCardPlayedIndex].m_iVy;
 
             // update card position
             cardTmp[iCardPlayedIndex].DrawCard( m_pAlphaDisplay);
@@ -1402,12 +1402,12 @@ void cGameMainGfx::animateManoEnd(int iPlayerIx)
         Uint32 uiNowTime = SDL_GetTicks();
         uiTickTot = uiNowTime - uiInitialTick ;      
         if (uiNowTime < uiLast_time + uiFrameRate)
-		{
-			SDL_Delay(uiLast_time + uiFrameRate - uiNowTime);
+        {
+            SDL_Delay(uiLast_time + uiFrameRate - uiNowTime);
             uiLast_time = uiNowTime;
-		}
-	}
-	while(uiTickTot < 2000 && !bEnd);
+        }
+    }
+    while(uiTickTot < 2000 && !bEnd);
 
     SDL_FreeSurface(pCurrentDisplay);
 }
@@ -1430,61 +1430,61 @@ void cGameMainGfx::animGiocataEnd(int iPlayerIx)
 */
 int cGameMainGfx::animateCards()
 {
-	//srand((unsigned)time(NULL));
+    //srand((unsigned)time(NULL));
 
-	int rot;
-	int xspeed;
-	int yspeed;
+    int rot;
+    int xspeed;
+    int yspeed;
 
-	int		GRAVITY = 1;
-	int		MAXY = m_pScreen->h;
-	float	BOUNCE = 0.8f;
+    int		GRAVITY = 1;
+    int		MAXY = m_pScreen->h;
+    float	BOUNCE = 0.8f;
     cCardGfx cardGfx;
 
-	do
-	{
-		rot = rand() % 2;
-		cardGfx.cardSpec.SetCardIndex( rand() % 40 );
+    do
+    {
+        rot = rand() % 2;
+        cardGfx.cardSpec.SetCardIndex( rand() % 40 );
         
-		cardGfx.m_iX   = rand() % m_pScreen->w;
-		cardGfx.m_iY  = rand() % m_pScreen->h/2;
+        cardGfx.m_iX   = rand() % m_pScreen->w;
+        cardGfx.m_iY  = rand() % m_pScreen->h/2;
 
-		if(rot)
+        if(rot)
         {
-			xspeed = -4;
+            xspeed = -4;
         }
-		else
+        else
         {
-			xspeed =  4;
+            xspeed =  4;
         }
 
-		yspeed = 0;
+        yspeed = 0;
 
-		do //while card is within the m_pScreen
-		{
-			SDL_PumpEvents();
-			if(SDL_GetMouseState(NULL, NULL))
-				return -1; // stop the animation
+        do //while card is within the m_pScreen
+        {
+            SDL_PumpEvents();
+            if(SDL_GetMouseState(NULL, NULL))
+                return -1; // stop the animation
 
-			yspeed = yspeed + GRAVITY;
-			cardGfx.m_iX += xspeed;
-			cardGfx.m_iY += yspeed;
+            yspeed = yspeed + GRAVITY;
+            cardGfx.m_iX += xspeed;
+            cardGfx.m_iY += yspeed;
 
-			if(cardGfx.m_iY + m_iCardHeight > MAXY)
-			{
-				cardGfx.m_iY = MAXY - m_iCardHeight;
-				yspeed = int(-yspeed * BOUNCE);
-			}
+            if(cardGfx.m_iY + m_iCardHeight > MAXY)
+            {
+                cardGfx.m_iY = MAXY - m_iCardHeight;
+                yspeed = int(-yspeed * BOUNCE);
+            }
 
-			cardGfx.DrawCard( m_pScreen);
-			//SDL_Flip(m_pScreen);
+            cardGfx.DrawCard( m_pScreen);
+            //SDL_Flip(m_pScreen);
             m_pApp->FlipScreen(m_pScreen); 
-		}
-		while((cardGfx.m_iX + 73 > 0) && (cardGfx.m_iX < m_pScreen->w));
-	}
-	while(1); 
+        }
+        while((cardGfx.m_iX + 73 > 0) && (cardGfx.m_iX < m_pScreen->w));
+    }
+    while(1); 
 
-	return 0;
+    return 0;
 }
 
 ////////////////////////////////////////
@@ -1723,10 +1723,10 @@ void cGameMainGfx::MatchLoop()
     
     SDL_Event event;
     int done = 0;
-	Uint32 uiLast_time;
-	Uint32 uiFrame = 0;
-	Uint32 uiNowTime = 0;
-	m_DelayAction.Reset(); 
+    Uint32 uiLast_time;
+    Uint32 uiFrame = 0;
+    Uint32 uiNowTime = 0;
+    m_DelayAction.Reset(); 
 
     STRING strTextTmp;
     uiLast_time = SDL_GetTicks();
@@ -1734,8 +1734,8 @@ void cGameMainGfx::MatchLoop()
     while(done == 0 &&
           m_bMatchTerminated == FALSE)
     {
-		uiFrame++;
-		       
+        uiFrame++;
+               
         while(SDL_PollEvent(&event))
         {
             
@@ -1779,25 +1779,25 @@ void cGameMainGfx::MatchLoop()
         }
         
         uiNowTime = SDL_GetTicks();
-		if (uiNowTime > uiLast_time + FPS)
-		{
-			drawStaticScene();
+        if (uiNowTime > uiLast_time + FPS)
+        {
+            drawStaticScene();
             uiLast_time = uiNowTime;
-		}
+        }
         
 
         // actualize display
-		// next action on the game
-		if ( m_DelayAction.CanStart() )
-		{
-			m_pCoreEngine->NextAction();
-		}
-		
-		// actualize display
-		//SDL_Flip(m_pScreen);
+        // next action on the game
+        if ( m_DelayAction.CanStart() )
+        {
+            m_pCoreEngine->NextAction();
+        }
+        
+        // actualize display
+        //SDL_Flip(m_pScreen);
         m_pApp->FlipScreen(m_pScreen); 
 
-	    if (m_pApp->IsWxClient())
+        if (m_pApp->IsWxClient())
         {
             // go back to the wx client
             done = 1; 
@@ -2120,7 +2120,7 @@ void cGameMainGfx::animatePlayCard(cCardGfx* pCard, int iPlayerIx)
     BOOL bEnd = FALSE;
     BOOL bXEnd = FALSE;
     do
-	{
+    {
         // clear screen
         SDL_BlitSurface(pCurrentDisplay, NULL, m_pAlphaDisplay, NULL);
         
@@ -2132,7 +2132,7 @@ void cGameMainGfx::animatePlayCard(cCardGfx* pCard, int iPlayerIx)
         }
         else
         {
-	        cardTmp.m_iX += cardTmp.m_iVx;
+            cardTmp.m_iX += cardTmp.m_iVx;
             if (cardTmp.m_iVx > 0)
             {
                 if (cardTmp.m_iX > iXF + 4)
@@ -2159,7 +2159,7 @@ void cGameMainGfx::animatePlayCard(cCardGfx* pCard, int iPlayerIx)
                     bXEnd = TRUE;
                 }
             }
-	        cardTmp.m_iY = iM * cardTmp.m_iX / 1000 + iQ;
+            cardTmp.m_iY = iM * cardTmp.m_iX / 1000 + iQ;
         }
 
         // update card position
@@ -2307,12 +2307,12 @@ void cGameMainGfx::animatePlayCard(cCardGfx* pCard, int iPlayerIx)
         Uint32 uiNowTime = SDL_GetTicks();
         uiTickTot = uiNowTime - uiInitialTick ;      
         if (uiNowTime < uiLast_time + uiFrameRate)
-		{
-			SDL_Delay(uiLast_time + uiFrameRate - uiNowTime);
+        {
+            SDL_Delay(uiLast_time + uiFrameRate - uiNowTime);
             uiLast_time = uiNowTime;
-		}
-	}
-	while(uiTickTot < 2000 && !bEnd);
+        }
+    }
+    while(uiTickTot < 2000 && !bEnd);
     ASSERT(bEnd);
     if (!bEnd)
     {
@@ -2394,7 +2394,7 @@ void cGameMainGfx::showPlayerMarkup(int iPlayerIx)
     if (iPlayerIx == PLAYER1)
     {
         dest.x = m_pScreen->w - m_pAnImages[IMG_TOCCA_PLAYER]->w - 20;
-		dest.y = m_pScreen->h - m_iCardHeight / 2;    
+        dest.y = m_pScreen->h - m_iCardHeight / 2;    
     }
     else if(iPlayerIx == PLAYER2)
     {
@@ -2403,7 +2403,7 @@ void cGameMainGfx::showPlayerMarkup(int iPlayerIx)
     }
     else if(iPlayerIx == PLAYER3)
     {
-		dest.x = m_pScreen->w / 2 + 10;
+        dest.x = m_pScreen->w / 2 + 10;
         dest.y = m_iCardHeight / 2;    
     }
     else if(iPlayerIx == PLAYER4)
@@ -2431,7 +2431,7 @@ void cGameMainGfx::showPlayerMarkup(int iPlayerIx)
 void    cGameMainGfx::showPointsPlayer(int iPlayerIx , VCT_INT& vct_Points)
 {
     
-	
+    
 }
 
 ////////////////////////////////////////
@@ -2474,9 +2474,9 @@ void cGameMainGfx::showManoScore(BOOL bIsPlayed, int iPlayerIx, BOOL bIsPata, in
             destOff.h = m_pAnImages[IMG_LED_BLUEON]->h; 
             SDL_BlitSurface(m_pAnImages[IMG_LED_BLUEON], NULL, m_pScreen, &destOff);
 
-			dest.w = m_pAnImages[IMG_LED_BLUEON]->w;
-			dest.h = m_pAnImages[IMG_LED_BLUEON]->h; 
-			SDL_BlitSurface(m_pAnImages[IMG_LED_BLUEON], NULL, m_pScreen, &dest);
+            dest.w = m_pAnImages[IMG_LED_BLUEON]->w;
+            dest.h = m_pAnImages[IMG_LED_BLUEON]->h; 
+            SDL_BlitSurface(m_pAnImages[IMG_LED_BLUEON], NULL, m_pScreen, &dest);
         }
         else
         {
@@ -2544,7 +2544,7 @@ void cGameMainGfx::guiPlayerTurn(int iPlayer)
     m_bPlayerCanPlay = TRUE;
     TRACE("Player can play\n");
 
-	m_iPlayerThatHaveMarkup = iPlayer;
+    m_iPlayerThatHaveMarkup = iPlayer;
 
     // update the screen
     drawStaticScene();
@@ -2579,27 +2579,27 @@ void cGameMainGfx::showCurrentScore()
     
     SDL_Rect dest; 
 
-	// vertical line
+    // vertical line
     int i;
-	for ( i = iY1; i < iY_end; i += m_pAnImages[IMG_VERTICAL]->h)
-	{
-		dest.x = iX_vertical - 2;
-		dest.y = i;
-		dest.w = m_pAnImages[IMG_VERTICAL]->w;
-		dest.h = m_pAnImages[IMG_VERTICAL]->h; 
+    for ( i = iY1; i < iY_end; i += m_pAnImages[IMG_VERTICAL]->h)
+    {
+        dest.x = iX_vertical - 2;
+        dest.y = i;
+        dest.w = m_pAnImages[IMG_VERTICAL]->w;
+        dest.h = m_pAnImages[IMG_VERTICAL]->h; 
 
-		SDL_BlitSurface(m_pAnImages[IMG_VERTICAL], NULL, m_pScreen, &dest);
-	}
+        SDL_BlitSurface(m_pAnImages[IMG_VERTICAL], NULL, m_pScreen, &dest);
+    }
     // horizontal
     dest.w = m_pAnImages[IMG_HORIZONTAL]->w;
-	dest.h = m_pAnImages[IMG_HORIZONTAL]->h; 	
-	for (i = iX1; i < iX_end; i += m_pAnImages[IMG_HORIZONTAL]->w)
-	{
+    dest.h = m_pAnImages[IMG_HORIZONTAL]->h; 	
+    for (i = iX1; i < iX_end; i += m_pAnImages[IMG_HORIZONTAL]->w)
+    {
         dest.x = i;
-		dest.y = iY_oriz;
-		
+        dest.y = iY_oriz;
+        
         SDL_BlitSurface(m_pAnImages[IMG_HORIZONTAL], NULL, m_pScreen, &dest);
-	}
+    }
 
     // name on grid
     cPlayer* pPlayer = m_pCoreEngine->GetPlayer(PLAYER1) ;
@@ -2619,7 +2619,7 @@ void cGameMainGfx::showCurrentScore()
     CHAR buffTmp[256];
     sprintf(buffTmp, "%s: %s", m_pLangMgr->GetStringId(cLanguages::ID_STA_PTCURRENT).c_str(), lpsNamePoints.c_str());
     int tx, ty;
-	TTF_SizeText(m_pFontText, buffTmp, &tx, &ty);
+    TTF_SizeText(m_pFontText, buffTmp, &tx, &ty);
     int iX_posCurrScore = iX_vertical - tx/2;
     int iY_posCurrScore = iY_end + 10;
     GFX_UTIL::DrawString(m_pScreen, buffTmp, iX_posCurrScore, 
@@ -2627,7 +2627,7 @@ void cGameMainGfx::showCurrentScore()
    
     //player score
     int iNumGiocate = m_pMatchPoints->GetNumGiocateInCurrMatch();
-	VCT_INT vct_Point_pl1;
+    VCT_INT vct_Point_pl1;
     for (int j = 0; j < NUM_PLAY_INVIDO_2; j++)
     {
         vct_Point_pl1.clear();
@@ -2671,9 +2671,9 @@ void cGameMainGfx::showCurrentScore()
                     }
                     else
                     {
-				        vct_Point_pl1.push_back(GioInfo.eScore);
+                        vct_Point_pl1.push_back(GioInfo.eScore);
                     }
-				    
+                    
                 }
             }
         }
@@ -2698,7 +2698,7 @@ void cGameMainGfx::enableCmds()
 */
 void    cGameMainGfx::enableNumButtonsCmd(int iNumButt)
 {
-	int i,j;
+    int i,j;
     for( i = 0; i < iNumButt; i++)
     {
         // enable buttons with commands
@@ -2895,16 +2895,16 @@ void cGameMainGfx::ALG_PlayerHasPlayed(int iPlayerIx,  CARDINFO* pCard)
     CardSpec Card;
     Card.SetCardInfo(*pCard); 
     
-	// markup player that have to play
-	cPlayer* pPlayer = 0;
-	
-	m_pCoreEngine->GetPlayerInPlaying(&pPlayer);
-	ASSERT(pPlayer);
+    // markup player that have to play
+    cPlayer* pPlayer = 0;
+    
+    m_pCoreEngine->GetPlayerInPlaying(&pPlayer);
+    ASSERT(pPlayer);
 
-	if (pPlayer)
-	{
-		m_iPlayerThatHaveMarkup = pPlayer->GetIndex() ;
-	}
+    if (pPlayer)
+    {
+        m_iPlayerThatHaveMarkup = pPlayer->GetIndex() ;
+    }
 
     bool bFound = false;
     if ( iPlayerIx != m_iPlayer1Index)
@@ -2918,7 +2918,7 @@ void cGameMainGfx::ALG_PlayerHasPlayed(int iPlayerIx,  CARDINFO* pCard)
                 m_aOpponentCards[iOppIx][iIndex].State = cCardGfx::CSW_ST_VISIBLE;
                 m_aOpponentCards[iOppIx][iIndex].cardSpec  = Card;
                 TRACE("card played %s\n", Card.GetName() );
-				drawPlayedCard(&m_aOpponentCards[iOppIx][iIndex], iPlayerIx);
+                drawPlayedCard(&m_aOpponentCards[iOppIx][iIndex], iPlayerIx);
                 bFound = true;
                 
             }
@@ -3035,12 +3035,12 @@ void cGameMainGfx::ALG_NewGiocata(CARDINFO* pCardArray, int iNumOfCards, int iPl
     // markup to the first player
     cPlayer* pPlayer = 0;
     m_pCoreEngine->GetPlayerInPlaying(&pPlayer);
-	ASSERT(pPlayer);
+    ASSERT(pPlayer);
 
-	if (pPlayer)
-	{
-		m_iPlayerThatHaveMarkup = pPlayer->GetIndex() ;
-	}
+    if (pPlayer)
+    {
+        m_iPlayerThatHaveMarkup = pPlayer->GetIndex() ;
+    }
     
 }
 
@@ -3060,11 +3060,11 @@ void cGameMainGfx::ALG_ManoEnd(I_MatchScore* pScore)
     while (uiNowTime < uiStartTime + 2000)
     {
         uiNowTime = SDL_GetTicks();
-	    if (uiNowTime > uiLast_time + 30)
-	    {
-		    drawStaticScene();
+        if (uiNowTime > uiLast_time + 30)
+        {
+            drawStaticScene();
             uiLast_time = uiNowTime;
-	    }
+        }
         if ( allBallonAreDisabled())
         {
             break;
@@ -3092,7 +3092,7 @@ void cGameMainGfx::ALG_ManoEnd(I_MatchScore* pScore)
     }
 
     // update the screen
-	m_iPlayerThatHaveMarkup = iPlayerIx;
+    m_iPlayerThatHaveMarkup = iPlayerIx;
     drawStaticScene();
 
     

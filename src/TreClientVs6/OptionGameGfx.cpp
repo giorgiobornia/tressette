@@ -103,7 +103,7 @@ void OptionGameGfx::Init(SDL_Rect* pRect, SDL_Surface*  pScreen, TTF_Font* pFont
 {
     ASSERT(pRect);
     ASSERT(pScreen);
-	//ASSERT(m_pFontCtrl);
+    //ASSERT(m_pFontCtrl);
     m_rctOptBox = *pRect;
     m_pScreen = pScreen;
     m_pFontText = pFontTxt;
@@ -251,7 +251,7 @@ void OptionGameGfx::Show(SDL_Surface* pScene_background)
 
         // wait until the user click on button
         SDL_Event event;
-	    while (SDL_PollEvent(&event)) 
+        while (SDL_PollEvent(&event)) 
         {
             if(event.type == SDL_QUIT) 
             {
@@ -263,9 +263,9 @@ void OptionGameGfx::Show(SDL_Surface* pScene_background)
                 if(event.key.keysym.sym == SDLK_RETURN) 
                 {
                     // confirm the dialog
-				    ButCmdClicked(MYIDOK);
+                    ButCmdClicked(MYIDOK);
                     break;
-			    }
+                }
                 else if (event.key.keysym.sym == SDLK_ESCAPE)
                 {
                     // escape character
@@ -351,10 +351,10 @@ void OptionGameGfx::Show(SDL_Surface* pScene_background)
         // synch to frame rate
         Uint32 uiNowTime = SDL_GetTicks();
         if (uiNowTime < uiLast_time + FPS)
-		{
-			SDL_Delay(uiLast_time + FPS - uiNowTime);
+        {
+            SDL_Delay(uiLast_time + FPS - uiNowTime);
             uiLast_time = uiNowTime;
-		}
+        }
     }
     SDL_FreeSurface(pShadowSrf);
 }

@@ -49,6 +49,8 @@ static const char* lpszUrlDonate = "http://sourceforge.net/donate/index.php?grou
 static const char* lpszMsgUrl = "Creato da www.invido.it";
 static const char* lpszVersion = "Tressette ver. 0.7.4";
 static const char* lpszIniFontVera = "data/font/vera.ttf"; 
+static const char* lpszDonateImage = "data/images/donate.png";
+static const char* lpszDonateImageOver = "data/images/donate_over.png";
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
@@ -140,7 +142,7 @@ void cMenuMgr::Init(SDL_Surface *s)
     SDL_Rect rctBt1;
     rctBt1.h = 28;
     rctBt1.w = 150;
-    rctBt1.y = m_pScreen->h -  rctBt1.h  - 20;
+    rctBt1.y = m_pScreen->h -  rctBt1.h  - 0;
     rctBt1.x = m_pScreen->w -  rctBt1.w  - 20;
     m_phomeUrl = new cLabelLinkGfx;
     m_phomeUrl->m_fncbClickEvent = MakeDelegate(this, &cMenuMgr::LabelClicked);
@@ -148,14 +150,6 @@ void cMenuMgr::Init(SDL_Surface *s)
     m_phomeUrl->SetState(cLabelLinkGfx::INVISIBLE);
     m_phomeUrl->SetUrl(lpszUrlHome); 
     m_phomeUrl->SetWindowText(lpszMsgUrl);
-
-    // link to donate image
-    m_pdonateUrl = new cImageLinkGfx;
-    m_pdonateUrl->m_fncbClickEvent = MakeDelegate(this, &cMenuMgr::LabelClicked);
-    m_pdonateUrl->Init(&rctBt1, m_pScreen,  m_pfont3, MYIDLABELURL); 
-    m_pdonateUrl->SetState(cLabelLinkGfx::INVISIBLE);
-    m_pdonateUrl->SetUrl(lpszUrlDonate); 
-    m_pdonateUrl->SetWindowText(lpszMsgUrl);
 
     // label version
     m_pLabelVersion = new cLabelGfx;
@@ -167,6 +161,18 @@ void cMenuMgr::Init(SDL_Surface *s)
     m_pLabelVersion->Init(&rctBt1, m_pScreen,  m_pfont2, MYIDLABELVER); 
     m_pLabelVersion->SetState(cLabelGfx::INVISIBLE);
     m_pLabelVersion->SetWindowText(lpszVersion);
+
+    // link to donate image
+    rctBt1.h = 30;
+    rctBt1.w = 150;
+    rctBt1.y = m_pLabelVersion->m_rctButt.y - 50;
+    rctBt1.x = m_pLabelVersion->m_rctButt.x;
+    m_pdonateUrl = new cImageLinkGfx;
+    m_pdonateUrl->m_fncbClickEvent = MakeDelegate(this, &cMenuMgr::LabelClicked);
+    m_pdonateUrl->Init(&rctBt1, m_pScreen, lpszDonateImage, lpszDonateImageOver, MYIDLABELURL); 
+    m_pdonateUrl->SetState(cLabelLinkGfx::INVISIBLE);
+    m_pdonateUrl->SetUrl(lpszUrlDonate); 
+    
 }
 
 
@@ -185,37 +191,37 @@ void cMenuMgr::Init(SDL_Surface *s)
 void cMenuMgr::drawStaticSpriteEx(int src_x, int src_y, int src_dx, int src_dy, 
                                   int dst_x, int dst_y, SDL_Surface* sprite) 
 {
-	SDL_Rect src_rec = {src_x, src_y, src_dx, src_dy};
-	SDL_Rect dst_rec = {dst_x, dst_y, 0, 0};
-	SDL_BlitSurface(sprite, &src_rec, m_pScreen, &dst_rec);
+    SDL_Rect src_rec = {src_x, src_y, src_dx, src_dy};
+    SDL_Rect dst_rec = {dst_x, dst_y, 0, 0};
+    SDL_BlitSurface(sprite, &src_rec, m_pScreen, &dst_rec);
 }
 
 void cMenuMgr::drawRect(int x, int y, int dx, int dy, SDL_Color c) 
 {
-	drawStaticLine(x, y, dx, y, c);
-	drawStaticLine(x, y, x, dy, c);
-	drawStaticLine(dx, y, dx, dy, c);
-	drawStaticLine(x, dy, dx, dy, c);
+    drawStaticLine(x, y, dx, y, c);
+    drawStaticLine(x, y, x, dy, c);
+    drawStaticLine(dx, y, dx, dy, c);
+    drawStaticLine(x, dy, dx, dy, c);
 }
 
 void cMenuMgr::drawStaticLine(int x0, int y0, int x1, int y1, SDL_Color color) 
 {
-	int d = (int)sqrtf(
-		pow((float)(x1 - x0), 2.0f) +
-		pow((float)(y1 - y0), 2.0f)
-	);
-	static int x = 0, y = 0;
-	static int w = m_pScreen->w;
-	static int h = m_pScreen->h;
-	for(int t = 0; t < d; t++) 
+    int d = (int)sqrtf(
+        pow((float)(x1 - x0), 2.0f) +
+        pow((float)(y1 - y0), 2.0f)
+    );
+    static int x = 0, y = 0;
+    static int w = m_pScreen->w;
+    static int h = m_pScreen->h;
+    for(int t = 0; t < d; t++) 
     {
-		x = x0 + (x1 - x0)*t/d;
-		y = y0 + (y1 - y0)*t/d;
-		if((x >= 0) && (y >= 0) && (x < w) && (y < h)) 
+        x = x0 + (x1 - x0)*t/d;
+        y = y0 + (y1 - y0)*t/d;
+        if((x >= 0) && (y >= 0) && (x < w) && (y < h)) 
         {
             setPixel(m_pScreen, x, y, color);
-		}
-	}
+        }
+    }
 }
 
 
@@ -257,8 +263,8 @@ void cMenuMgr::setPixel ( SDL_Surface* pSurface , int x , int y , SDL_Color colo
 */
 void cMenuMgr::fillRect(int x0, int y0, int width, int height, Uint32 color) 
 {
-	SDL_Rect rect = { x0, y0, width, height };
-	SDL_FillRect(m_pScreen, &rect, color);
+    SDL_Rect rect = { x0, y0, width, height };
+    SDL_FillRect(m_pScreen, &rect, color);
 }
 
 ////////////////////////////////////////
@@ -270,14 +276,14 @@ void cMenuMgr::drawBackground()
     //SDL_BlitSurface(m_pScene_background, &m_rctPanel, m_pScreen, &m_rctPanel);
     SDL_BlitSurface(m_pScene_background, NULL, m_pScreen, NULL);
 
-	m_iSx = m_pScreen->clip_rect.w;
-	m_iDebx = m_iSx / 6;
-	m_iSy = m_pScreen->clip_rect.h;
-	m_iDeby = m_iSy / 5;
+    m_iSx = m_pScreen->clip_rect.w;
+    m_iDebx = m_iSx / 6;
+    m_iSy = m_pScreen->clip_rect.h;
+    m_iDeby = m_iSy / 5;
 
-	Uint32 c_bluefg = SDL_MapRGB(m_pScreen->format, 51, 72, 133);
-	Uint32 c_redfg = SDL_MapRGB(m_pScreen->format, 153, 202, 51);
-	
+    Uint32 c_bluefg = SDL_MapRGB(m_pScreen->format, 51, 72, 133);
+    Uint32 c_redfg = SDL_MapRGB(m_pScreen->format, 153, 202, 51);
+    
     // don't invert, because content overwrite header
     // content
     //fillRect(m_iDebx, m_iDeby, m_iSx - m_iDebx*2, m_iSy - m_iDeby*2, c_bluefg);
@@ -286,12 +292,12 @@ void cMenuMgr::drawBackground()
     // header bar
     fillRect(m_iDebx, m_iDeby-2, m_iSx - m_iDebx*2, 38, c_redfg);
     
-	
+    
     drawRect(m_iDebx-1, m_iDeby-1, m_iSx - m_iDebx + 1, m_iSy - m_iDeby + 1, staColor_gray);
-	drawRect(m_iDebx-2, m_iDeby-2, m_iSx - m_iDebx + 2, m_iSy - m_iDeby + 2, staColor_black);
-	drawRect(m_iDebx, m_iDeby, m_iSx - m_iDebx, m_iSy - m_iDeby, staColor_white);
-	drawRect(m_iDebx, m_iDeby, m_iSx - m_iDebx, m_iDeby + 36, staColor_white);
-	
+    drawRect(m_iDebx-2, m_iDeby-2, m_iSx - m_iDebx + 2, m_iSy - m_iDeby + 2, staColor_black);
+    drawRect(m_iDebx, m_iDeby, m_iSx - m_iDebx, m_iSy - m_iDeby, staColor_white);
+    drawRect(m_iDebx, m_iDeby, m_iSx - m_iDebx, m_iDeby + 36, staColor_white);
+    
 }
 
 
@@ -302,13 +308,13 @@ void cMenuMgr::drawBackground()
 void cMenuMgr::drawStringSH(const char* tmp, int x, int y, SDL_Color& color, TTF_Font* customfont)
 {
     int tx, ty;
-	TTF_SizeText(customfont, tmp, &tx, &ty);
-	SDL_Surface* s = TTF_RenderText_Blended(customfont, tmp, staColor_ombre);
-	drawStaticSpriteEx(0, 0, tx, ty, x+2, y+2, s);
-	SDL_FreeSurface(s);
-	s = TTF_RenderText_Blended(customfont, tmp, color);
-	drawStaticSpriteEx(0, 0, tx, ty, x, y, s);
-	SDL_FreeSurface(s);
+    TTF_SizeText(customfont, tmp, &tx, &ty);
+    SDL_Surface* s = TTF_RenderText_Blended(customfont, tmp, staColor_ombre);
+    drawStaticSpriteEx(0, 0, tx, ty, x+2, y+2, s);
+    SDL_FreeSurface(s);
+    s = TTF_RenderText_Blended(customfont, tmp, color);
+    drawStaticSpriteEx(0, 0, tx, ty, x, y, s);
+    SDL_FreeSurface(s);
 }
 
 
@@ -319,15 +325,15 @@ void cMenuMgr::drawStringSH(const char* tmp, int x, int y, SDL_Color& color, TTF
 void   cMenuMgr::HandleOptionMenu()
 {
     SDL_Color c = staColor_white;
-	drawBackground();
+    drawBackground();
     int iNumItemInMenu = 4;
-	
-	// Draw title bar
-	drawStringSH(m_pLanString->GetStringId(cLanguages::ID_MEN_OPTIONS).c_str(), 
+    
+    // Draw title bar
+    drawStringSH(m_pLanString->GetStringId(cLanguages::ID_MEN_OPTIONS).c_str(), 
                  m_iDebx+10, m_iDeby+5, c, m_pfont1);
-	
-	// General
-	if (m_ifocus_valuesM_A != 0)
+    
+    // General
+    if (m_ifocus_valuesM_A != 0)
     {
         c = staColor_off; 
     }
@@ -335,10 +341,10 @@ void   cMenuMgr::HandleOptionMenu()
     {
         c = staColor_on;
     }
-	drawStringSH(m_pLanString->GetStringId(cLanguages::ID_OPT_GENERAL).c_str(),
+    drawStringSH(m_pLanString->GetStringId(cLanguages::ID_OPT_GENERAL).c_str(),
                  m_iDebx+10, m_iDeby+50, c, m_pfont1);
-	// Deck
-	if (m_ifocus_valuesM_A != 1) 	
+    // Deck
+    if (m_ifocus_valuesM_A != 1) 	
     {
         c = staColor_off; 
     }
@@ -346,10 +352,10 @@ void   cMenuMgr::HandleOptionMenu()
     {
         c = staColor_on;
     }
-	drawStringSH( m_pLanString->GetStringId(cLanguages::ID_MAZZONAME).c_str(),
+    drawStringSH( m_pLanString->GetStringId(cLanguages::ID_MAZZONAME).c_str(),
                   m_iDebx+10, m_iDeby+90, c, m_pfont1);
-	// Match
-	if (m_ifocus_valuesM_A != 2)
+    // Match
+    if (m_ifocus_valuesM_A != 2)
     {
         c = staColor_off;
     }
@@ -357,11 +363,11 @@ void   cMenuMgr::HandleOptionMenu()
     {
         c = staColor_on;
     }
-	drawStringSH(m_pLanString->GetStringId(cLanguages::ID_OPT_GAME).c_str(),
+    drawStringSH(m_pLanString->GetStringId(cLanguages::ID_OPT_GAME).c_str(),
                  m_iDebx+10, m_iDeby+130, c, m_pfont1);
 
     // Go back
-	if (m_ifocus_valuesM_A != 3) 	
+    if (m_ifocus_valuesM_A != 3) 	
     {
         c = staColor_off;
     }
@@ -369,46 +375,46 @@ void   cMenuMgr::HandleOptionMenu()
     {
         c = staColor_on;
     }
-	drawStringSH( m_pLanString->GetStringId(cLanguages::ID_BACK).c_str(),
+    drawStringSH( m_pLanString->GetStringId(cLanguages::ID_BACK).c_str(),
                   m_iDebx+10, m_iSy-m_iDeby-40, c, m_pfont1);
 
    
     SDL_Event event;
-	while (SDL_PollEvent(&event)) 
+    while (SDL_PollEvent(&event)) 
     {
-		if(event.type == SDL_QUIT) 
+        if(event.type == SDL_QUIT) 
         {
             m_pApp->LeaveMenu(); 
             break;
         }
 
-		if(event.type == SDL_KEYDOWN) 
+        if(event.type == SDL_KEYDOWN) 
         {			
-			if(event.key.keysym.sym == SDLK_UP) 
+            if(event.key.keysym.sym == SDLK_UP) 
             {
-				m_ifocus_valuesM_A--;
-				if(m_ifocus_valuesM_A < 0) 
+                m_ifocus_valuesM_A--;
+                if(m_ifocus_valuesM_A < 0) 
                 {
                     m_ifocus_valuesM_A = 0;
                 }
-			}			
-			if(event.key.keysym.sym == SDLK_DOWN) 
+            }			
+            if(event.key.keysym.sym == SDLK_DOWN) 
             {
-				m_ifocus_valuesM_A++;
-				if(m_ifocus_valuesM_A > iNumItemInMenu) 
+                m_ifocus_valuesM_A++;
+                if(m_ifocus_valuesM_A > iNumItemInMenu) 
                 {
                     m_ifocus_valuesM_A = iNumItemInMenu;
                 }
-			}
-			if(event.key.keysym.sym == SDLK_RETURN) 
-            {
-				optionMenuNext();
-			}
-			if (event.key.keysym.sym == SDLK_ESCAPE ) 
-            {
-				m_pApp->LeaveMenu(); 
             }
-		}
+            if(event.key.keysym.sym == SDLK_RETURN) 
+            {
+                optionMenuNext();
+            }
+            if (event.key.keysym.sym == SDLK_ESCAPE ) 
+            {
+                m_pApp->LeaveMenu(); 
+            }
+        }
         if (event.type == SDL_MOUSEMOTION)
         {
             if ( event.motion.x >= m_rctPanel.x && event.motion.x <=  m_rctPanel.x + m_rctPanel.h &&
@@ -444,7 +450,7 @@ void   cMenuMgr::HandleOptionMenu()
         {
             optionMenuNext();
         }
-	}
+    }
 }
 
 
@@ -465,18 +471,19 @@ void   cMenuMgr::HandleRootMenu()
 {
     // show the link url label 
     m_phomeUrl->SetState(cLabelLinkGfx::VISIBLE); 
-    m_pLabelVersion->SetState(cLabelGfx::VISIBLE); 
+    m_pLabelVersion->SetState(cLabelGfx::VISIBLE);
+    m_pdonateUrl->SetState(cLabelLinkGfx::VISIBLE);
         
     SDL_Color c = staColor_white;
-	drawBackground();
+    drawBackground();
     int iNumItemInMenu = 4;
-	
-	// Draw title bar
-	drawStringSH(m_pLanString->GetStringId(cLanguages::ID_WELCOMETITLEBAR).c_str(), 
+    
+    // Draw title bar
+    drawStringSH(m_pLanString->GetStringId(cLanguages::ID_WELCOMETITLEBAR).c_str(), 
                  m_iDebx+10, m_iDeby+5, c, m_pfont1);
-	
-	// Play
-	if (m_ifocus_valuesM_A != 0)
+    
+    // Play
+    if (m_ifocus_valuesM_A != 0)
     {
         c = staColor_off; 
     }
@@ -484,10 +491,10 @@ void   cMenuMgr::HandleRootMenu()
     {
         c = staColor_on;
     }
-	drawStringSH(m_pLanString->GetStringId(cLanguages::ID_START).c_str(),
+    drawStringSH(m_pLanString->GetStringId(cLanguages::ID_START).c_str(),
                  m_iDebx+10, m_iDeby+50, c, m_pfont1);
-	// Options
-	if (m_ifocus_valuesM_A != 1) 	
+    // Options
+    if (m_ifocus_valuesM_A != 1)
     {
         c = staColor_off; 
     }
@@ -495,10 +502,10 @@ void   cMenuMgr::HandleRootMenu()
     {
         c = staColor_on;
     }
-	drawStringSH( m_pLanString->GetStringId(cLanguages::ID_MEN_OPTIONS).c_str(),
+    drawStringSH( m_pLanString->GetStringId(cLanguages::ID_MEN_OPTIONS).c_str(),
                   m_iDebx+10, m_iDeby+90, c, m_pfont1);
-	// Credits
-	if (m_ifocus_valuesM_A != 2)
+    // Credits
+    if (m_ifocus_valuesM_A != 2)
     {
         c = staColor_off;
     }
@@ -506,7 +513,7 @@ void   cMenuMgr::HandleRootMenu()
     {
         c = staColor_on;
     }
-	drawStringSH(m_pLanString->GetStringId(cLanguages::ID_CREDITS).c_str(),
+    drawStringSH(m_pLanString->GetStringId(cLanguages::ID_CREDITS).c_str(),
                  m_iDebx+10, m_iDeby+130, c, m_pfont1);
 
     // Help
@@ -518,11 +525,11 @@ void   cMenuMgr::HandleRootMenu()
     {
         c = staColor_on;
     }
-	drawStringSH(m_pLanString->GetStringId(cLanguages::ID_MN_HELP).c_str(),
+    drawStringSH(m_pLanString->GetStringId(cLanguages::ID_MN_HELP).c_str(),
                  m_iDebx+10, m_iDeby+170, c, m_pfont1);
 
-	// Quit
-	if (m_ifocus_valuesM_A != 4) 	
+    // Quit
+    if (m_ifocus_valuesM_A != 4)
     {
         c = staColor_off;
     }
@@ -530,45 +537,45 @@ void   cMenuMgr::HandleRootMenu()
     {
         c = staColor_on;
     }
-	drawStringSH( m_pLanString->GetStringId(cLanguages::ID_EXIT).c_str(),
+    drawStringSH( m_pLanString->GetStringId(cLanguages::ID_EXIT).c_str(),
                   m_iDebx+10, m_iSy-m_iDeby-40, c, m_pfont1);
-	
+    
     SDL_Event event;
-	while (SDL_PollEvent(&event)) 
+    while (SDL_PollEvent(&event)) 
     {
-		if(event.type == SDL_QUIT) 
+        if(event.type == SDL_QUIT) 
         {
             m_pApp->LeaveMenu(); 
             break;
         }
 
-		if(event.type == SDL_KEYDOWN) 
-        {			
-			if(event.key.keysym.sym == SDLK_UP) 
+        if(event.type == SDL_KEYDOWN) 
+        {
+            if(event.key.keysym.sym == SDLK_UP) 
             {
-				m_ifocus_valuesM_A--;
-				if(m_ifocus_valuesM_A < 0) 
+                m_ifocus_valuesM_A--;
+                if(m_ifocus_valuesM_A < 0) 
                 {
                     m_ifocus_valuesM_A = 0;
                 }
-			}			
-			if(event.key.keysym.sym == SDLK_DOWN) 
+            }
+            if(event.key.keysym.sym == SDLK_DOWN) 
             {
-				m_ifocus_valuesM_A++;
-				if(m_ifocus_valuesM_A > iNumItemInMenu) 
+                m_ifocus_valuesM_A++;
+                if(m_ifocus_valuesM_A > iNumItemInMenu) 
                 {
                     m_ifocus_valuesM_A = iNumItemInMenu;
                 }
-			}
-			if(event.key.keysym.sym == SDLK_RETURN) 
-            {
-				rootMenuNext();
-			}
-			if (event.key.keysym.sym == SDLK_ESCAPE ) 
-            {
-				m_pApp->LeaveMenu(); 
             }
-		}
+            if(event.key.keysym.sym == SDLK_RETURN) 
+            {
+                rootMenuNext();
+            }
+            if (event.key.keysym.sym == SDLK_ESCAPE ) 
+            {
+                m_pApp->LeaveMenu(); 
+            }
+        }
         if (event.type == SDL_MOUSEMOTION)
         {
             if ( event.motion.x >= m_rctPanel.x && event.motion.x <=  m_rctPanel.x + m_rctPanel.h &&
@@ -613,12 +620,14 @@ void   cMenuMgr::HandleRootMenu()
         else if (event.type == SDL_MOUSEBUTTONUP)
         {
             m_phomeUrl->MouseUp(event);
+            m_pdonateUrl->MouseUp(event);
         }
-	}
+    }
     // draw url label
     m_phomeUrl->Draw(m_pScreen);
     // draw label version
     m_pLabelVersion->Draw(m_pScreen);
+    m_pdonateUrl->Draw(m_pScreen);
 }
 
 
@@ -631,20 +640,20 @@ void   cMenuMgr::rootMenuNext()
 
     switch(m_ifocus_valuesM_A) 
     {
-	    case 0 :			// Play
-		    m_pApp->SetNextMenu(MENU_GAME); 
+        case 0 :			// Play
+            m_pApp->SetNextMenu(MENU_GAME); 
             break;
-	    case 1 :		 	// Options
-		    m_pApp->SetNextMenu(MENU_OPTIONS);
+        case 1 :		 	// Options
+            m_pApp->SetNextMenu(MENU_OPTIONS);
             break;
         case 2 :		 	// Credits
-		    m_pApp->SetNextMenu(MENU_CREDITS);
+            m_pApp->SetNextMenu(MENU_CREDITS);
             break;
         case 3 :		 	// Help
-		    m_pApp->SetNextMenu(MENU_HELP);
+            m_pApp->SetNextMenu(MENU_HELP);
             break;
-	    case 4 :			// Quit
-		    m_pApp->LeaveMenu(); 
+        case 4 :			// Quit
+            m_pApp->LeaveMenu(); 
             break;
     }
 }
@@ -659,17 +668,17 @@ void   cMenuMgr::optionMenuNext()
 
     switch(m_ifocus_valuesM_A) 
     {
-	    case 0 :			// Play
-		    m_pApp->SetNextMenu(OPT_GENERAL); 
+        case 0 :			// Play
+            m_pApp->SetNextMenu(OPT_GENERAL); 
             break;
-	    case 1 :		 	// Options
-		    m_pApp->SetNextMenu(OPT_DECK);
+        case 1 :		 	// Options
+            m_pApp->SetNextMenu(OPT_DECK);
             break;
         case 2 :		 	// Credits
-		    m_pApp->SetNextMenu(OPT_GAME);
+            m_pApp->SetNextMenu(OPT_GAME);
             break;
         case 3 :		 	// Go back
-		    m_pApp->LeaveMenu();
+            m_pApp->LeaveMenu();
             break;
         default:
             ASSERT(0);

@@ -56,8 +56,8 @@ public:
         PRESSED
     };
 
-	cLabelLinkGfx();
-   	virtual ~cLabelLinkGfx();
+    cLabelLinkGfx();
+    virtual ~cLabelLinkGfx();
 
     //! init the control 
     void   Init(SDL_Rect* pRect, SDL_Surface*  pScreen, TTF_Font* pFont, int iButID);
