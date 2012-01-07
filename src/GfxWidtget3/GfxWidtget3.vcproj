@@ -199,6 +199,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\cImageLinkGfx.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\gfx_widgets\cLabelGfx.cpp"
 				>
 			</File>
@@ -288,6 +292,10 @@
 			</File>
 			<File
 				RelativePath="..\gfx_widgets\cEditGfx.h"
+				>
+			</File>
+			<File
+				RelativePath=".\cImageLinkGfx.h"
 				>
 			</File>
 			<File

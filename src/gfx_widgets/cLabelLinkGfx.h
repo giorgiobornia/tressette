@@ -68,7 +68,7 @@ public:
     //! mouse up
     void   MouseUp(SDL_Event &event);
     //! draw the button 
-    void   Draw(SDL_Surface*  pScreen);
+    virtual void   Draw(SDL_Surface*  pScreen);
     //! enable the button
     void   EnableWindow(BOOL bVal){m_bIsEnabled = bVal;}
     //! set button state
@@ -90,7 +90,7 @@ public:
     //! click the event
     CLICKEVENT    m_fncbClickEvent;
 
-private:
+protected:
     //! surface where to draw the button
     SDL_Surface*    m_pSurf_Bar;
     //! button font

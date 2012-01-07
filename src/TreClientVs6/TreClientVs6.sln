@@ -5,6 +5,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TreClientVs6", "TreClientVs
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GfxWidtget3", "..\GfxWidtget3\GfxWidtget3.vcproj", "{CE3F06F4-018E-4044-856F-87A9FA79CA39}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Tressette_Installer", "Tressette_Installer\Tressette_Installer.vdproj", "{D8C0ECA2-2224-40A5-9C9F-85335477AEC8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -19,6 +21,10 @@ Global
 		{CE3F06F4-018E-4044-856F-87A9FA79CA39}.Debug|Win32.Build.0 = Debug|Win32
 		{CE3F06F4-018E-4044-856F-87A9FA79CA39}.Release|Win32.ActiveCfg = Release|Win32
 		{CE3F06F4-018E-4044-856F-87A9FA79CA39}.Release|Win32.Build.0 = Release|Win32
+		{D8C0ECA2-2224-40A5-9C9F-85335477AEC8}.Debug|Win32.ActiveCfg = Debug
+		{D8C0ECA2-2224-40A5-9C9F-85335477AEC8}.Debug|Win32.Build.0 = Debug
+		{D8C0ECA2-2224-40A5-9C9F-85335477AEC8}.Release|Win32.ActiveCfg = Release
+		{D8C0ECA2-2224-40A5-9C9F-85335477AEC8}.Release|Win32.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
