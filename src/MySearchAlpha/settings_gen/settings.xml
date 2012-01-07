@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<file>
+<!-- file name-->
+<name>cSettings</name>
+<name_define>__SETTINGS_INI_H_</name_define>
+
+<class_settings>
+<!-- class settings -->
+    <name>SearchSettings</name>
+    <section>
+    <!-- section ALL-->
+        <!-- class section name-->
+        <name>SubAll</name>
+        <!-- section istance name -->
+        <name_obj>All</name_obj>
+            <item_string>
+                <name>inizia</name>
+                <default>est</default>
+                <comment>Player that begin</comment>
+            </item_string> 
+            <item_string>
+                <name>history</name>
+                <default></default>
+                <comment>Hand history</comment>
+            </item_string> 
+    </section>
+    <section>
+    <!-- section NORD-->
+        <!-- class section name-->
+        <name>SubNord</name>
+        <name_obj>nord</name_obj>
+        <!-- section istance name -->
+        	<item_string>
+                <name>bastoni</name>
+                <default>27</default>
+                <comment>Bastoni hand</comment>
+            </item_string>
+            <item_string>
+                <name>coppe</name>
+                <default>3C5</default>
+                <comment>coppe hand</comment>
+            </item_string>
+            <item_string>
+                <name>denari</name>
+                <default>RF</default>
+                <comment>denari hand</comment>
+            </item_string>
+            <item_string>
+                <name>spade</name>
+                <default>7C4</default>
+                <comment>spade hand</comment>
+            </item_string>
+    </section>
+    <section>
+    <!-- section EST-->
+        <!-- class section name-->
+        <name>SubEst</name>
+        <name_obj>est</name_obj>
+        <!-- section istance name -->
+        	<item_string>
+                <name>bastoni</name>
+                <default>RF4</default>
+                <comment>Bastoni hand</comment>
+            </item_string>
+            <item_string>
+                <name>coppe</name>
+                <default>A6</default>
+                <comment>coppe hand</comment>
+            </item_string>
+            <item_string>
+                <name>denari</name>
+                <default>3265</default>
+                <comment>denari hand</comment>
+            </item_string>
+            <item_string>
+                <name>spade</name>
+                <default>R</default>
+                <comment>spade hand</comment>
+            </item_string>
+    </section>
+    <section>
+    <!-- section SUD-->
+        <!-- class section name-->
+        <name>SubSud</name>
+        <name_obj>sud</name_obj>
+        <!-- section istance name -->
+        	<item_string>
+                <name>bastoni</name>
+                <default>A3C6</default>
+                <comment>Bastoni hand</comment>
+            </item_string>
+            <item_string>
+                <name>coppe</name>
+                <default>2F4</default>
+                <comment>coppe hand</comment>
+            </item_string>
+            <item_string>
+                <name>denari</name>
+                <default>A</default>
+                <comment>denari hand</comment>
+            </item_string>
+            <item_string>
+                <name>spade</name>
+                <default>A5</default>
+                <comment>spade hand</comment>
+            </item_string>
+    </section>
+    <section>
+    <!-- section WEST-->
+        <!-- class section name-->
+        <name>SubWest</name>
+        <name_obj>west</name_obj>
+        <!-- section istance name -->
+        	<item_string>
+                <name>bastoni</name>
+                <default>5</default>
+                <comment>Bastoni hand</comment>
+            </item_string>
+            <item_string>
+                <name>coppe</name>
+                <default>R7</default>
+                <comment>coppe hand</comment>
+            </item_string>
+            <item_string>
+                <name>denari</name>
+                <default>C74</default>
+                <comment>denari hand</comment>
+            </item_string>
+            <item_string>
+                <name>spade</name>
+                <default>32F6</default>
+                <comment>spade hand</comment>
+            </item_string>
+    </section>
+    
+</class_settings>
+
+</file>

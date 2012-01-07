@@ -1,0 +1,2 @@
+"C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\signtool.exe" sign /v /f c:\Biblio\comodo\igor_cert_comodo.pfx /p rambo78 C:\Projects\cpp\tressette\tressettesvn\src\TreClientVs6\Tressette_Installer\Release\Tressette_Installer.msi 
+pause

@@ -1,0 +1,4 @@
+Ci sono diversi files da modificare quando si pubblica una versione:
+- resource file, cambiare il numero (windows)
+- Cambiare la stringa lpszVersion in cMenuMgr.cpp
+- Aggiornare il file ReadmeTressette.txt nella directory out

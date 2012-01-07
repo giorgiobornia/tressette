@@ -1,0 +1,104 @@
+Il problema è che il 3D è in mano al player 0 e non al player 0
+Quando parte Alphabeta e ricostruisce il trick, si ha un errore di carta non trovata.
+
+m_arrCardAllTrickInit=
+
+player 0: CD, 5B, FD, 6D, CB, 
+player 1: 4D, 7D, 4C, 2B, FS
+player 2: 6S, 2D, FC, RS, CS
+player 3: 3S, 5S, RD, 5D, 3D
+
+Sulla tavola:
+CD, 3D
+
+Questa la storia:
+2259, 1, TR_INFO, cCoreEngine.cpp, 78, cCore is created
+2259, 2, TR_INFO, cCoreEngine.cpp, 383, Nuova giocata
+2259, 3, TR_INFO, cCoreEngine.cpp, 418, Socio => 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Re di bastoni] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Asso di  coppe] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Cinque di  coppe] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Cavallo di bastoni] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Cinque di  denari] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Fante di  denari] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Asso di  denari] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Fante di  coppe] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Cinque di bastoni] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Tre di bastoni] 
+2259, 3, TR_INFO, cCoreEngine.cpp, 418, Cucciolo => 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Cavallo di  coppe] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Due di  spade] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Sei di  spade] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Cavallo di  denari] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Tre di  coppe] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Tre di  spade] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Quattro di bastoni] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Cinque di  spade] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Quattro di  spade] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Cavallo di  spade] 
+2259, 3, TR_INFO, cCoreEngine.cpp, 418, Igor => 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Sette di  spade] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Tre di  denari] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Re di  spade] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Sette di  coppe] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Sei di  denari] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Re di  denari] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Due di  denari] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Fante di bastoni] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Sei di bastoni] 
+2259, 4, TR_INFO, cCoreEngine.cpp, 428, [Re di  coppe] 
+2260, 3, TR_INFO, cCoreEngine.cpp, 418, Bombolo => 
+2260, 4, TR_INFO, cCoreEngine.cpp, 428, [Quattro di  denari] 
+2260, 4, TR_INFO, cCoreEngine.cpp, 428, [Sette di  denari] 
+2260, 4, TR_INFO, cCoreEngine.cpp, 428, [Quattro di  coppe] 
+2260, 4, TR_INFO, cCoreEngine.cpp, 428, [Asso di  spade] 
+2260, 4, TR_INFO, cCoreEngine.cpp, 428, [Fante di  spade] 
+2260, 4, TR_INFO, cCoreEngine.cpp, 428, [Due di  coppe] 
+2260, 4, TR_INFO, cCoreEngine.cpp, 428, [Asso di bastoni] 
+2260, 4, TR_INFO, cCoreEngine.cpp, 428, [Due di bastoni] 
+2260, 4, TR_INFO, cCoreEngine.cpp, 428, [Sette di bastoni] 
+2260, 4, TR_INFO, cCoreEngine.cpp, 428, [Sei di  coppe] 
+2260, 12, TR_INFO, cCoreEngine.cpp, 742, Player 2, has said HO_ILTRE
+2260, 11, TR_INFO, cCoreEngine.cpp, 697, Card  played [Re di bastoni]
+2275, 12, TR_INFO, cCoreEngine.cpp, 742, Player 3, has said VOLO
+2275, 11, TR_INFO, cCoreEngine.cpp, 697, Card  played [Quattro di bastoni]
+2315, 11, TR_INFO, cCoreEngine.cpp, 697, Card  played [Sei di bastoni]
+2317, 12, TR_INFO, cCoreEngine.cpp, 742, Player 1, has said HO_ILDUE
+2317, 11, TR_INFO, cCoreEngine.cpp, 697, Card  played [Sette di bastoni]
+2319, 5, TR_INFO, cCoreEngine.cpp, 457, Mano_End
+2321, 12, TR_INFO, cCoreEngine.cpp, 742, Player 2, has said STRISCIO_NEHOTANTE
+2321, 11, TR_INFO, cCoreEngine.cpp, 697, Card  played [Tre di bastoni]
+2324, 12, TR_INFO, cCoreEngine.cpp, 742, Player 3, has said HO_ILTRE
+2324, 11, TR_INFO, cCoreEngine.cpp, 697, Card  played [Quattro di  spade]
+2342, 11, TR_INFO, cCoreEngine.cpp, 697, Card  played [Fante di bastoni]
+2345, 12, TR_INFO, cCoreEngine.cpp, 742, Player 1, has said PUNTO_ANCORAUNA
+2345, 11, TR_INFO, cCoreEngine.cpp, 697, Card  played [Asso di bastoni]
+2346, 5, TR_INFO, cCoreEngine.cpp, 457, Mano_End
+2348, 12, TR_INFO, cCoreEngine.cpp, 742, Player 2, has said STRISCIO_NEHOTANTE
+2348, 11, TR_INFO, cCoreEngine.cpp, 697, Card  played [Asso di  coppe]
+2350, 12, TR_INFO, cCoreEngine.cpp, 742, Player 3, has said PUNTO_ANCORAUNA
+2350, 11, TR_INFO, cCoreEngine.cpp, 697, Card  played [Cavallo di  coppe]
+2352, 11, TR_INFO, cCoreEngine.cpp, 697, Card  played [Sette di  coppe]
+2354, 12, TR_INFO, cCoreEngine.cpp, 742, Player 1, has said STRISCIO_NEHOTANTE
+2354, 11, TR_INFO, cCoreEngine.cpp, 697, Card  played [Due di  coppe]
+2355, 5, TR_INFO, cCoreEngine.cpp, 457, Mano_End
+2356, 12, TR_INFO, cCoreEngine.cpp, 742, Player 1, has said PUNTO_ANCORAUNA
+2356, 11, TR_INFO, cCoreEngine.cpp, 697, Card  played [Sei di  coppe]
+2359, 12, TR_INFO, cCoreEngine.cpp, 742, Player 2, has said PUNTO_ANCORAUNA
+2359, 11, TR_INFO, cCoreEngine.cpp, 697, Card  played [Cinque di  coppe]
+2359, 12, TR_INFO, cCoreEngine.cpp, 742, Player 3, has said VOLO
+2359, 11, TR_INFO, cCoreEngine.cpp, 697, Card  played [Tre di  coppe]
+2361, 11, TR_INFO, cCoreEngine.cpp, 697, Card  played [Re di  coppe]
+2362, 5, TR_INFO, cCoreEngine.cpp, 457, Mano_End
+2363, 12, TR_INFO, cCoreEngine.cpp, 742, Player 3, has said HO_ILTRE
+2363, 11, TR_INFO, cCoreEngine.cpp, 697, Card  played [Due di  spade]
+2365, 11, TR_INFO, cCoreEngine.cpp, 697, Card  played [Sette di  spade]
+2367, 12, TR_INFO, cCoreEngine.cpp, 742, Player 1, has said PUNTO_ANCORAUNA
+2367, 11, TR_INFO, cCoreEngine.cpp, 697, Card  played [Asso di  spade]
+2369, 12, TR_INFO, cCoreEngine.cpp, 742, Player 2, has said STRISCIO_NEHOTANTE
+2369, 11, TR_INFO, cCoreEngine.cpp, 697, Card  played [Asso di  denari]
+2370, 5, TR_INFO, cCoreEngine.cpp, 457, Mano_End
+2372, 12, TR_INFO, cCoreEngine.cpp, 742, Player 3, has said VOLO
+2372, 11, TR_INFO, cCoreEngine.cpp, 697, Card  played [Cavallo di  denari]
+2375, 11, TR_INFO, cCoreEngine.cpp, 697, Card  played [Tre di  denari]
+

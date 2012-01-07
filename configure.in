@@ -1,0 +1,62 @@
+AC_INIT(configure.in)
+
+AM_INIT_AUTOMAKE(tressettetux, 0.1)
+
+AC_PROG_MAKE_SET
+AC_PROG_CXX
+AC_PROG_CPP
+AC_PROG_INSTALL
+
+dnl Check for expat
+EXPAT_INCLUDE=""
+EXPAT_LIB="-lexpat"
+EXPAT_SUBDIR=""
+LIBEXPAT="-lexpat"
+
+AC_CHECK_HEADER(expat.h, [have_expat_include=yes])
+
+if test x$have_expat_include = xno; then
+      AC_MSG_ERROR(
+  [*** Unable to find expat header file! (http://expat.sourceforge.net)]
+  [Please install the library and header files if you want to link to the shared library,]
+  [or run './configure --enable-internalexpat' to compile an internal version of expat.] 
+  )
+fi
+
+AC_CHECK_LIB(expat, XML_ParserCreate, have_expat_lib=yes)
+
+if test x$have_expat_lib = xno; then
+AC_MSG_ERROR(
+    [*** Unable to find expat xml library! (http://expat.sourceforge.net)]
+    [Please install the library and header files if you want to link to the shared library,]
+    [or run './configure --enable-internalexpat' to compile an internal version of expat.] 
+    )
+fi
+
+AC_SUBST(EXPAT_INCLUDE)
+AC_SUBST(EXPAT_LIB)
+AC_SUBST(EXPAT_SUBDIR)
+AC_SUBST(LIBEXPAT)
+
+
+dnl Check for SDL
+dnl The minimum SDL version required
+AM_PATH_SDL("1.2.6",
+            :,
+      AC_MSG_ERROR([*** SDL version $SDL_VERSION not found!])
+)
+
+LIBSDL_LIBS=`sdl-config --libs`
+
+dnl set default prefix to `sdl-config --prefix`
+ac_default_prefix=`sdl-config --prefix`
+SDL_PREFIX=`sdl-config --prefix`
+LIBSDL_CFLAGS=`sdl-config --cflags`
+ 
+AC_SUBST(SDL_PREFIX)
+AC_SUBST(LIBSDL_LIBS)
+AC_SUBST(LIBSDL_CFLAGS)
+
+AC_OUTPUT(Makefile 
+          src/Makefile
+          src/TreClientVs6/Makefile)

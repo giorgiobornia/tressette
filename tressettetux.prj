@@ -1,0 +1,255 @@
+# Anjuta Version 1.2.2 
+Compatibility Level: 1 
+
+<PROJECT_DESCRIPTION_START>
+Gioco del tressette<PROJECT_DESCRIPTION_END>
+<CONFIG_PROGS_START>
+<CONFIG_PROGS_END>
+<CONFIG_LIBS_START>
+<CONFIG_LIBS_END>
+<CONFIG_HEADERS_START>
+<CONFIG_HEADERS_END>
+<CONFIG_CHARACTERISTICS_START>
+<CONFIG_CHARACTERISTICS_END>
+<CONFIG_LIB_FUNCS_START>
+<CONFIG_LIB_FUNCS_END>
+<CONFIG_ADDITIONAL_START>
+<CONFIG_ADDITIONAL_END>
+<CONFIG_FILES_START>
+<CONFIG_FILES_END>
+<MAKEFILE_AM_START>
+<MAKEFILE_AM_END>
+
+props.file.type=project
+
+anjuta.version=1.2.2
+anjuta.compatibility.level=1
+
+project.name=tressettetux
+project.type=GENERIC
+project.target.type=EXECUTABLE
+project.version=0.1
+project.author=Igor Sarzi Sartori
+project.source.target=unknown
+project.has.gettext=0
+project.gui.command=
+project.programming.language=C++
+project.excluded.modules=intl
+
+project.config.extra.modules.before=
+project.config.extra.modules.after=
+project.config.blocked=1
+project.config.disable.overwriting=1 1 1 1 1 1 1 1 1 
+
+project.menu.entry=tressettetux Version 0.1
+project.menu.group=Application
+project.menu.comment=tressettetux Version 0.1
+project.menu.icon=
+project.menu.need.terminal=0
+
+project.configure.options=
+anjuta.program.arguments=
+preferences.build.option.jobs=0
+preferences.build.option.silent=0
+preferences.build.option.autosave=0
+preferences.make=make
+preferences.build.option.keep.going=1
+preferences.build.option.warn.undef=0
+preferences.autoformat.custom.style= -i8 -sc -bli0 -bl0 -cbi0 -ss
+preferences.indent.opening=0
+preferences.autoformat.disable=1
+preferences.indent.automatic=1
+preferences.use.tabs=1
+preferences.indent.size=4
+preferences.tabsize=4
+preferences.indent.closing=0
+
+module.include.name=.
+module.include.type=
+module.include.files=\
+	include/win_type_global.h\
+	src/NetCommon/I_BinderMsg.h\
+	src/NetCommon/Log.h\
+	src/NetCommon/MsgQueueServer.h\
+	src/NetCommon/Socket.h\
+	src/NetCommon/cConnClient.h\
+	src/NetCommon/cListenData.h\
+	src/NetCommon/cListenDataClient.h\
+	src/NetCommon/cMsgBase.h\
+	src/NetCommon/cMsgCMD.h\
+	src/NetCommon/cMsgConnectServer.h\
+	src/NetCommon/cMsgSrv_Msg.h\
+	src/NetCommon/cNetClient.h\
+	src/NetCommon/cNetPlayer.h\
+	src/NetCommon/cPoolMsg.h\
+	src/NetCommon/cProtocolNet.h\
+	src/NetCommon/cTransaction.h\
+	src/NetCommon/tracestl.h\
+	src/TestStuff/TestCases/MatchTest.h\
+	src/TestStuff/TestCases/SimpleTest.h\
+	src/TreClientVs6/EngineApp.h\
+	src/TreClientVs6/EnterNameGfx.h\
+	src/TreClientVs6/FastDelegate.h\
+	src/TreClientVs6/OptionDeckGfx.h\
+	src/TreClientVs6/OptionGameGfx.h\
+	src/TreClientVs6/OptionGfx.h\
+	src/TreClientVs6/StdAfx.h\
+	src/TreClientVs6/cBalloonGfx.h\
+	src/TreClientVs6/cButtonGfx.h\
+	src/TreClientVs6/cCardGfx.h\
+	src/TreClientVs6/cCheckBoxGfx.h\
+	src/TreClientVs6/cComboGfx.h\
+	src/TreClientVs6/cDelayNextAction.h\
+	src/TreClientVs6/cEditGfx.h\
+	src/TreClientVs6/cGameMainGfx.h\
+	src/TreClientVs6/cHightScoreMgr.h\
+	src/TreClientVs6/cLabelGfx.h\
+	src/TreClientVs6/cLabelLinkGfx.h\
+	src/TreClientVs6/cMenuMgr.h\
+	src/TreClientVs6/cMesgBoxGfx.h\
+	src/TreClientVs6/cMusicManager.h\
+	src/TreClientVs6/cPopUpMenuGfx.h\
+	src/TreClientVs6/cProgressBarGfx.h\
+	src/TreClientVs6/cSettings.h\
+	src/TreClientVs6/cTipoDiMazzo.h\
+	src/TreClientVs6/credits.h\
+	src/TreClientVs6/fading.h\
+	src/TreClientVs6/gfx_util.h\
+	src/TreClientVs6/lang_gen.h\
+	src/TreClientVs6/regkey.h\
+	src/TreClientVs6/resource.h\
+	src/TreCore/AlgCompareFunct.h\
+	src/TreCore/AlgPlayerInterface.h\
+	src/TreCore/AlgSupport.h\
+	src/TreCore/CardSpec.h\
+	src/TreCore/CoreEnv.h\
+	src/TreCore/ErrorMsg.h\
+	src/TreCore/InfoComm.h\
+	src/TreCore/PythonExport.h\
+	src/TreCore/cAlgDefault.h\
+	src/TreCore/cAlgNetClientPlayer.h\
+	src/TreCore/cAlgPlugin.h\
+	src/TreCore/cAlgPythonPlayer.h\
+	src/TreCore/cCoreEngine.h\
+	src/TreCore/cGiocata.h\
+	src/TreCore/cMano.h\
+	src/TreCore/cMatchPoints.h\
+	src/TreCore/cMazzo.h\
+	src/TreCore/cPartita.h\
+	src/TreCore/cPlayer.h\
+	src/TreCore/cPlayerStatistic.h\
+	src/TreCore/cPlayersOnTable.h\
+	src/TreCore/cProbality.h\
+	src/TreCore/fuzzy.h\
+	src/TreCore/save_utility.h
+
+module.source.name=.
+module.source.type=
+module.source.files=\
+	src/NetCommon/Log.cpp\
+	src/NetCommon/MsgQueueServer.cpp\
+	src/NetCommon/Socket.cpp\
+	src/NetCommon/cConnClient.cpp\
+	src/NetCommon/cListenData.cpp\
+	src/NetCommon/cListenDataClient.cpp\
+	src/NetCommon/cMsgBase.cpp\
+	src/NetCommon/cMsgCMD.cpp\
+	src/NetCommon/cMsgConnectServer.cpp\
+	src/NetCommon/cMsgSrv_Msg.cpp\
+	src/NetCommon/cNetClient.cpp\
+	src/NetCommon/cNetPlayer.cpp\
+	src/NetCommon/cPoolMsg.cpp\
+	src/NetCommon/cProtocolNet.cpp\
+	src/NetCommon/cTransaction.cpp\
+	src/TreClientVs6/EngineApp.cpp\
+	src/TreClientVs6/EnterNameGfx.cpp\
+	src/TreClientVs6/OptionDeckGfx.cpp\
+	src/TreClientVs6/OptionGameGfx.cpp\
+	src/TreClientVs6/OptionGfx.cpp\
+	src/TreClientVs6/StdAfx.cpp\
+	src/TreClientVs6/cBalloonGfx.cpp\
+	src/TreClientVs6/cButtonGfx.cpp\
+	src/TreClientVs6/cCardGfx.cpp\
+	src/TreClientVs6/cCheckBoxGfx.cpp\
+	src/TreClientVs6/cComboGfx.cpp\
+	src/TreClientVs6/cDelayNextAction.cpp\
+	src/TreClientVs6/cEditGfx.cpp\
+	src/TreClientVs6/cGameMainGfx.cpp\
+	src/TreClientVs6/cHightScoreMgr.cpp\
+	src/TreClientVs6/cLabelGfx.cpp\
+	src/TreClientVs6/cLabelLinkGfx.cpp\
+	src/TreClientVs6/cMenuMgr.cpp\
+	src/TreClientVs6/cMesgBoxGfx.cpp\
+	src/TreClientVs6/cMusicManager.cpp\
+	src/TreClientVs6/cPopUpMenuGfx.cpp\
+	src/TreClientVs6/cProgressBarGfx.cpp\
+	src/TreClientVs6/cSettings.cpp\
+	src/TreClientVs6/cTipoDiMazzo.cpp\
+	src/TreClientVs6/credits.cpp\
+	src/TreClientVs6/fading.cpp\
+	src/TreClientVs6/gfx_util.cpp\
+	src/TreClientVs6/lang_gen.cpp\
+	src/TreClientVs6/main.cpp\
+	src/TreClientVs6/regkey.cpp\
+	src/TreCore/AlgSupport.cpp\
+	src/TreCore/CardSpec.cpp\
+	src/TreCore/PythonExport.cpp\
+	src/TreCore/cAlgDefault.cpp\
+	src/TreCore/cAlgNetClientPlayer.cpp\
+	src/TreCore/cAlgPlugin.cpp\
+	src/TreCore/cAlgPythonPlayer.cpp\
+	src/TreCore/cCoreEngine.cpp\
+	src/TreCore/cGiocata.cpp\
+	src/TreCore/cMano.cpp\
+	src/TreCore/cMatchPoints.cpp\
+	src/TreCore/cMazzo.cpp\
+	src/TreCore/cPartita.cpp\
+	src/TreCore/cPlayer.cpp\
+	src/TreCore/cPlayerStatistic.cpp\
+	src/TreCore/cPlayersOnTable.cpp\
+	src/TreCore/cProbality.cpp
+
+module.pixmap.name=.
+module.pixmap.type=
+module.pixmap.files=\
+
+module.data.name=.
+module.data.type=
+module.data.files=
+
+module.help.name=.
+module.help.type=
+module.help.files=
+
+module.doc.name=.
+module.doc.type=
+module.doc.files=\
+	doc/manual/tresset.html\
+	TODO\
+	README\
+	NEWS\
+	INSTALL\
+	COPYING\
+	ChangeLog\
+	AUTHORS
+
+module.po.files=
+
+compiler.options.supports=
+compiler.options.include.paths=\
+	.\
+	..
+compiler.options.library.paths=
+compiler.options.libraries=
+compiler.options.libraries.selected=
+compiler.options.defines=\
+	HAVE_CONFIG_H
+compiler.options.defines.selected=
+compiler.options.warning.buttons=0 0 1 1 0 1 0 0 0 0 0 0 0 1 0 0 
+compiler.options.optimize.buttons=0 0 1 0 
+compiler.options.other.buttons=1 0 
+compiler.options.other.c.flags=
+compiler.options.other.l.flags=
+compiler.options.other.l.libs=
+
+project.src.paths=

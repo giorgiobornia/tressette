@@ -1,0 +1,9 @@
+Migliorare e di molto,  l'euristica. quando si gioca un rifiuto bisogna giocare prima le scartine. 
+Quando si gioca un asso per prendere, bisogna stare attenti che non ci sia il due in mano all'avversario.
+
+La rappresentazione della linea migliore deve essere fatta su una sola riga.
+
+Occorre la limiazione del tempo
+
+Occorre che il mazzo non sia definito in partenza, ma venga fatto un montecarlo con circa 30 smazzate con le carte
+fissate del giocatore che deve giocare

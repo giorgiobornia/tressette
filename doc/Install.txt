@@ -1,0 +1,53 @@
+== Tressette
+Un programma per giocare a tressette in 4 al computer.
+
+
+== Prerequisiti di sistema
+Per compilare il gioco del tressette ho utilizzato Visual Studio 6 service pack 6,
+con il sistema operativo win Xp Sp2. L'installazione di Python non è 
+necessaria, ma la raccomando per usare appieno le possibilità di scripting. Ho 
+usato la versione 2.3. L'installazione di SDL non è necessaria in quanto essa è fornita in una 
+sotto directory del progetto.
+
+== Struttura delle directories
+\<tre7_root>
+          \Arts      == si trovano i files per generare immagini
+          \include   == gli includes di sdl e header globali
+          \doc       == documenti e manuali
+          \lib       == lib di sdl
+          \out       == la dir dove viene generato il programma
+          \python_2_3  == sdk di python per includere lo scripting engine
+                          nel tressette
+          \src       == sorgenti del programma, tools e test utilities
+             \src\MySearchAlpha      == sorgenti del tools MySearchAlpha
+             \src\NetCommon          == files per la gestione del gioco in rete
+             \src\TestEngine         == applicazione MFC per testare le classi TreCore
+	     \src\Tre7HandMaker2     == applicazione MFC per generare mani di gioco
+             \src\TreClientVs6       == il programma tressette
+             \src\TreCore            == classi core che non contengono elemnti HMI
+             \src\TreDllAlgPlayer    == plugin di esempio che implementa l'algoritmo di gioco
+
+== Compilazione 
+Il progetto del tressette si trova nella sotto directory 
+<tre7_root>/src/TreClientVs6/TreClientVs6.dsw. Una volta aperto in Visual Studio
+TreClientVs6.dsw, basta premere il pulsante build e il programma genera Tre.exe
+nella directory <tre7_root>\out
+
+== Risorse
+In <tre7_root>\out sono presenti i files di risorsa in modo da consentire un semplice deployment.
+Le risorse sono localizzate usando un path relativo partendo dalla directory dove si 
+trova tre.exe.
+
+== Distribuzione
+Tressette non necessita di setup, basta zippare la directory out. L'installazione del 
+programma avviene semplicemente scompattando l'archivio in una directory qualsiasi. 
+
+
+== Url di riferimento
+www.invido.it
+www.libsdl.org
+www.python.org
+
+== Autore
+Igor Sarzi Sartori
+Data: 13.12.2005

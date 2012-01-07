@@ -1,0 +1,93 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: CxxTest_3_Generate - Win32 Debug--------------------
+</h3>
+
+
+Microsoft (R) Program Maintenance Utility   Version 6.00.8168.0
+Copyright (C) Microsoft Corp 1988-1998. All rights reserved.
+
+ C:\Python23\python.exe ..\../cxxtestgen.py --gui=Win32Gui         --runner=ParenPrinter  --have-eh              --abort-on-fail -o runner.cpp ..\*.h
+<h3>
+--------------------Configuration: CxxTest_2_Build - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\igor\LOCALS~1\Temp\RSPE5.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /I "..\.." /I "..\..\..\TreClientVs6" /I "..\..\..\..\include" /I "..\..\..\TreCore" /I "../MySearchAlpha" /I "..\..\..\MySearchAlpha" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /D "NOPYTHON" /FR"Debug/" /Fp"Debug/CxxTest_2_Build.pch" /Yu"StdAfx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"G:\Projects\eVision\tressetteCVS\src\TestStuff\TestCases\msvc\runner.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\igor\LOCALS~1\Temp\RSPE5.tmp" 
+Creating temporary file "C:\DOCUME~1\igor\LOCALS~1\Temp\RSPE6.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib sdl.lib SDLmain.lib SDL_image.lib SDL_mixer.lib SDL_ttf.lib libexpat.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/runner.pdb" /debug /machine:I386 /out:"..\..\..\..\out/runner.exe" /pdbtype:sept /libpath:"..\..\..\..\lib" 
+.\Debug\AlgSupport.obj
+.\Debug\cAlgDefault.obj
+.\Debug\cAlgNetClientPlayer.obj
+.\Debug\cAlgPlugin.obj
+.\Debug\cAlgPythonPlayer.obj
+.\Debug\CardSpec.obj
+.\Debug\cCoreEngine.obj
+.\Debug\cGiocata.obj
+.\Debug\cMano.obj
+.\Debug\cMatchPoints.obj
+.\Debug\cMazzo.obj
+.\Debug\cPartita.obj
+.\Debug\cPlayer.obj
+.\Debug\cPlayersOnTable.obj
+.\Debug\cPlayerStatistic.obj
+.\Debug\cProbality.obj
+.\Debug\PythonExport.obj
+.\Debug\cBalloonGfx.obj
+.\Debug\cButtonGfx.obj
+.\Debug\cCardGfx.obj
+.\Debug\cCheckBoxGfx.obj
+.\Debug\cComboGfx.obj
+.\Debug\cDelayNextAction.obj
+.\Debug\cEditGfx.obj
+.\Debug\cHightScoreMgr.obj
+.\Debug\cLabelGfx.obj
+.\Debug\cLabelLinkGfx.obj
+.\Debug\cMenuMgr.obj
+.\Debug\cMesgBoxGfx.obj
+.\Debug\cMusicManager.obj
+.\Debug\cPopUpMenuGfx.obj
+.\Debug\cProgressBarGfx.obj
+.\Debug\credits.obj
+.\Debug\cTipoDiMazzo.obj
+.\Debug\EngineApp.obj
+.\Debug\EnterNameGfx.obj
+.\Debug\fading.obj
+.\Debug\gfx_util.obj
+.\Debug\OptionDeckGfx.obj
+.\Debug\OptionGameGfx.obj
+.\Debug\OptionGfx.obj
+.\Debug\cAlgABSolver.obj
+.\Debug\cCardItem.obj
+.\Debug\cHand.obj
+.\Debug\cStateAB.obj
+.\Debug\TrickHistory.obj
+.\Debug\cGameMainGfx.obj
+.\Debug\cSettings.obj
+.\Debug\lang_gen.obj
+.\Debug\regkey.obj
+.\Debug\StdAfx.obj
+.\Debug\runner.obj
+.\Debug\TraceService.obj
+]
+Creating command line "link.exe @C:\DOCUME~1\igor\LOCALS~1\Temp\RSPE6.tmp"
+<h3>Output Window</h3>
+Compiling...
+runner.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+runner.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

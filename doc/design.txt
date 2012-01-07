@@ -1,0 +1,26 @@
+Tressette a 4 giocatori
+------------------------
+
+Svolgimento
+-----------
+Un giocatore gioca da solo assieme ad altri 3 giocatori comandati dalla cpu, uno dei
+quali è il socio. Il socio agisce per favorire la coppia, ma non conosce le carte del giocatore, solo i segni. Come del resto anche gli avversari.
+
+
+Segnali
+-----
+I segnali vengono effettuati tramite pop-up menu. E' possibile usare il tasto destro del mause
+per fare comparire il menu, oppure il programma lo mostra automaticamente prima di giocare la
+carta. 
+I segnali della varainte classica sono: striscio, busso, punto e volo.
+
+Localizzazioni
+--------------
+Il programma, oltre alla variante classica, supporta  varie localizzazioni del tressette.
+Le varianti per il momento previste sono: Abruzzo, Roma  e Breda Cisoni.
+
+Opzioni
+-------
+E' possibile impostare il mazzo delle carte, il nome del giocatore, il punteggio finale
+la localizzazione e l'accuso dei buoni giochi. Per quest'ultimo c'è anche l'opzione prima
+mano o seconda mano. Sono disponibili le opzioni che controllano l'audio e le animazioni. 

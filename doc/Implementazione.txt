@@ -1,0 +1,92 @@
+== Tre.exe
+
+== Introduzione
+tre.exe è il tressette con l'interfaccia grafica realizzata con SDL.
+Ho usato la separazione della parte che si occupa della GUI.
+Essa è rappresentata dai files presenti nella directory TreClientVs6.
+La parte che gestisce il gioco nei suoi stati e gli algoritmi sono nella
+directory TreCore.
+
+== Generatori di codice
+Ci sono 2 classi che sono generate automaticamente e sono:
+cSettings.h/cpp e lang_gen.h/cpp. I generatori (xml => xslt = .h,.cpp  )
+si trovano nelle sottodiretories settings_gen e language_gen.
+Per utilizzarli bisogna un tool che esegua la conversione xml con xslt.
+Per quanto riguarda la classe cSettings ho utilizzato registry_settings_h.xsl e
+registry_settings_cpp.xsl. libini_settings_h.xsl può essre utilizzato
+per generare settings per il target linux.
+
+== Settings (classe cSettings)
+Non sono un fan di xml, ma dopo aver passato molto tempo a scrivere sempre lo stesso 
+noiso codice per salvare una variabile nel registro o in un file ini, ho cercato di creare un
+generatore. Lo schema generale è quello di avere una variabile globale g_Options
+la quale contiene tutti i valori dei settings. All'inizio del programma si chiama la
+funzione GetProfile() per caricare i dati ini g_Options. Per accedervi basta usare 
+la direttiva #include "cSettings.h" e si ha disposizione il dato livello di gioco così:
+g_Options.All.iLevel. La funzione WriteProfile() salva i settings nel registry.
+Ho cercato di non usare g_Options all'interno di TreCore, ma solo nell'interfaccia grafica.
+Quando si vuole aggiungere una nuova variabile all'oggetto g_Options, basta metterla
+nella sezione desiderata nel file  settings.xml e ricreare la classe cSettings.h.
+
+== Lingue (classe cLanguages file lang_gen.h)
+Tre.exe supporta 3 lingue: il dialetto bredese (quello che si parla a Breda Cisoni provincia
+di Mantova), l'italiano e l'inglese. Per rendere l'implementazione semplice nel file 
+language_gen/lang_det.xml ci sono le stringhe utilizzate nel programma nelle 3 lingue.
+L'accesso alla una stringa del nome del gioco, avviene usando il codice seguente:
+cLanguages* pLan = cLanguages::Instance();
+STRING strNome = m_pLanString->GetCStringId(cLanguages::ID_GAMENAME)
+Questo modo di procedere funziona bene fino a quando non si devono usare i caratteri unicode.
+
+== SDL
+SDL viene usata spesso per creare giochi full-screen con molte animazioni. Per un gioco 
+di carte come il tressette può sembrare un overkill, ma ci sono dei vantaggi.
+Il vantaggio principale rispetto a MFC è che è molto semplice il porting verso altri sistemi
+operativi. Lo svantaggio principale è che sdl non offre un supporto per la creazione di widget. Per ovviare a questo ho creato una serie di widget semplici per impostare 
+le opzioni.     
+
+==  Routing dei messaggi
+Le classi che si occupano della gestione degli stati sono nella sotto directory TreCore.
+La gestione è coordinata dalla classe cCore del file cCoreEngine.h. Gli stati della mano, 
+della giocata e della partita avvengono rispettivamente nelle classi cMano, cGiocata e 
+cPartita. Una mano finisce quando tutti e 4 i giocatori hanno giocato una carta. Una giocata
+finisce quando tutte e 10 le carte sono state giocate, mentre la partita finisce quando una
+coppia raggiunge o supera il punteggio definito.
+cCore comunica con HMI attraverso l'interfaccia I_ALG_Player, definita nel file 
+AlgPlayerInterface.h mentre l'HMI comunica con cCore usando l'interfaccia I_CORE_Game definita nel file InfoComm.h. L'interfaccia I_ALG_Player è implementata anche nella classe cAlgDefault.h usata
+per comandare l'algoritmo di gioco. In questo modo ho reso trasparente la gestione delle notifiche 
+da parte della classe cCore.
+Per esempio la notifica al giocatore che deve giocare avviene usando la chiamata in cCore
+pI_ALG_Player->ALG_Play()
+La risposta avviene usando  
+pI_CORE_Game->Player_playCard(...) e può provenire da un plugin, da uno script in python, 
+dall'utente attraverso la GUI oppure dall'algoritmo di gioco.
+Quando avviene una notifica di un evento da parte di cCore, accade che avviene una reazione da parte
+del giocatore. Quest'azione genera un cambiamento di stato il quale a sua volta genera una notifica di cCore.
+E' la classe cMano che scandisce le azioni. Nel main loop del gioco (cGameMainGfx::MatchLoop() )
+ avviene la seguente:
+
+                if ( m_DelayAction.CanStart() )
+		{
+                	m_pCoreEngine->NextAction();
+		}
+La chiamata a NextAction() triggera un'azione legata ad un particolare stato di cMano, cGiocata e cPartita.
+La risposta viene accodata e processata alla chiamata successiva di NextAction(). 
+Il polling di NextAction() è conveniente in quanto SDL utilizza un loop entro il quale avviene il check
+dell'input e il render dell'animazione. 
+
+== Visual Studio 8
+Ho aggirnato i file del progetto TreClientVs6 a Visualstudio 8 quando ho creato la versione per AppUp Intel.
+Per create una dll con le mie librerie grafiche GfxWidtget, ho fatto diverse prove ed errori. Se si usa
+la lib statica, non riesco a fare il link con la versione release. Allora ho creato una dll nel progetto GfxWidtget2,
+che però mi ingloba .net che non uso. Allora ho creato una dll usando il progetto win32 che nel wizard successivo
+chiede se si vuole creare una dll. Per esportare le classi ho usato la macro TRE_LIBRARY_EXPORT mentre nell'exe
+ho usato TRE_LIBRARY_IMPORT in modo da usare gli stessi header.
+
+
+
+
+
+  
+
+
+ 

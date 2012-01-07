@@ -1,0 +1,187 @@
+// <%= "#{@nameClass}.cpp" %>
+// <%= @comment %>
+// Automatic class implementation file generated with ruby template settings_expat_cpp.rtemp
+// Please don't change me manually, but use code generator
+
+#include "StdAfx.h"
+#include "win_type_global.h"
+#include "<%= "#{@nameClass}.h" %>"
+#include <fstream>
+#include "expat.h"
+
+using namespace Space<%= @nameClass %>;
+
+// global object
+<%= @nameClass %> <%= @globalObj %>;
+<% @sect_coll.each do |x| %>
+static const char* lpsz<%= "#{x[0]} = \"#{x[0]}\";" %>
+    <% section = @items_coll[x[0]]
+       section.each do |item| %>
+static const char* lpsz<%= "#{x[0]}#{item[1]} = \"#{x[0]}#{item[1]}\";" %>
+  <% end %>
+<% end %>
+
+static const char* lpszTAB2  = "  ";
+static const char* lpszTAB4  = "    ";
+
+
+
+//! constructor
+<%= @nameClass %>::<%= @nameClass %>()
+{
+}
+
+<% @sect_coll.each do |x| %>
+<%= @nameClass %>::<%= "#{x[0]}::#{x[0]}()" %>
+{
+  <% section = @items_coll[x[0]]
+       section.each do |item| %>
+  <% item[2] = "\"#{item[2]}\"" if item[0] == "STRING" %>
+  <%= "#{item[1]} = #{item[2]};" %>
+  <% end %>
+}
+<% end %>
+
+//! Write the object <%= @globalObj %> in the xml file
+void Space<%= @nameClass %>::WriteProfile(const char* lpszFileName)
+{
+  std::ofstream out_settings;
+  out_settings.open( lpszFileName );
+  out_settings << "<settings>\n"; 
+  <% @sect_coll.each do |x| %>
+out_settings << <%= "lpszTAB2 << \"<#{x[0]}>\\n\";"%>
+    <% section = @items_coll[x[0]]
+       section.each do |item| %>
+      <% if item[0] == "STRING" %>
+    out_settings << <%= "lpszTAB4 << \"<#{x[0]}#{item[1]}>\" << #{@globalObj}.#{x[1]}.#{item[1]}.c_str() << \"</#{x[0]}#{item[1]}>\\n\";"%>
+      <% else %>
+    out_settings << <%= "lpszTAB4 << \"<#{x[0]}#{item[1]}>\" << #{@globalObj}.#{x[1]}.#{item[1]} << \"</#{x[0]}#{item[1]}>\\n\";"%>
+      <% end %>
+    <% end %>
+  out_settings << <%= "lpszTAB2 << \"</#{x[0]}>\\n\";"%>
+  <% end %>
+  
+  out_settings << "</settings>\n";
+  out_settings.close(); 
+}
+
+
+
+
+
+static void XMLCALL
+startElement(void *userData, const char *name, const char **atts)
+{
+    XML_MYUSERDATA* pmyUserData = (XML_MYUSERDATA*)userData; 
+    <% @sect_coll.each do |x| %>
+    <% section = @items_coll[x[0]]
+       section.each do |item| %>
+    if ( strcmp(<%= "\"#{x[0]}#{item[1]}\""%>, name) == 0)
+    {
+    <% if item[0] == "STRING" %>
+        (*pmyUserData).pStringValue = &<%= "#{@globalObj}.#{x[1]}.#{item[1]};"%>
+        (*pmyUserData).bIsString = TRUE;
+    <% else %>
+        (*pmyUserData).pIntValue = &<%= "#{@globalObj}.#{x[1]}.#{item[1]};"%>
+        (*pmyUserData).bIsString = FALSE;
+    <% end %>
+        (*pmyUserData).bCopyData = TRUE;
+        return ;
+    }
+    <% end %>
+  <% end %>
+}
+
+static void XMLCALL
+endElement(void *userData, const char *name)
+{
+    XML_MYUSERDATA* pmyUserData = (XML_MYUSERDATA*)userData;
+    (*pmyUserData).bCopyData = FALSE;
+} 
+
+static void XMLCALL
+charhndl(void *userData, const XML_Char *s, int len)
+{
+    XML_MYUSERDATA* pmyUserData = (XML_MYUSERDATA*)userData;
+    if ((*pmyUserData).bCopyData)
+    {
+        STRING strValue;
+        char* pValS = const_cast<char*>(s);
+        char c;
+        int iIndex = 0;
+        c = pValS[iIndex];
+
+        while (c != '<' && 
+               c != '\0' )
+        {
+            strValue.append(1, c);
+            iIndex++;
+            c = pValS[iIndex];
+        }
+        (*pmyUserData).bCopyData = FALSE;
+        if ((*pmyUserData).bIsString )
+        {
+            (*(*pmyUserData).pStringValue) = strValue; 
+        }
+        else
+        {
+            (*(*pmyUserData).pIntValue)  = atoi(strValue.c_str());
+        }
+    }
+}
+
+static void load_file(std::string& s, std::istream& is)
+{
+   s.erase();
+   //
+   // attempt to grow string buffer to match file size, this doesn t always work..
+   s.reserve(is.rdbuf()->in_avail());
+   char c;
+   while(is.get(c))
+   {
+      // use logarithmic growth stategy, in case
+      // in_avail (above) returned zero:
+      if(s.capacity() == s.size())
+         s.reserve(s.capacity() * 3);
+      s.append(1, c);
+   }
+}
+
+
+//! Read the object <%= @globalObj %> from the xml file
+void Space<%= @nameClass %>::GetProfile(const char* lpszFileName)
+{
+    std::ifstream inp_settings;
+    inp_settings.open( lpszFileName );
+    <%= @globalObj %>.SetIsUsingXmlFile(FALSE);
+    if (inp_settings)
+    {
+        XML_Parser parser = XML_ParserCreate(NULL);
+        XML_SetElementHandler(parser, startElement, endElement);
+        XML_SetCharacterDataHandler(parser, charhndl);
+
+        XML_MYUSERDATA myUserData;
+        myUserData.bCopyData = FALSE;
+        XML_SetUserData(parser, &myUserData);
+
+        STRING strInpFile;
+        load_file(strInpFile, inp_settings);
+
+        if (XML_Parse(parser, strInpFile.c_str(), strInpFile.length(), TRUE) == XML_STATUS_ERROR) 
+        {
+            fprintf(stderr,
+              "%s at line %d\n",
+              XML_ErrorString(XML_GetErrorCode(parser)),
+              XML_GetCurrentLineNumber(parser));
+
+            return;
+        }
+        XML_ParserFree(parser);
+        <%= @globalObj %>.SetIsUsingXmlFile(TRUE);
+    }
+
+    inp_settings.close();
+}
+
+
+

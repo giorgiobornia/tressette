@@ -1,0 +1,103 @@
+// <%= "#{@nameClass}.cpp" %>
+// <%= @comment %>
+// Automatic class implementation file generated with ruby template
+
+#include "StdAfx.h"
+#include "win_type_global.h"
+#include "libini.h"
+#include "<%= "#{@nameClass}.h" %>"
+
+using namespace Space<%= @nameClass %>;
+
+// global object
+<%= @nameClass %> <%= @globalObj %>;
+<% @sect_coll.each do |x| %>
+static const char* lpsz<%= "#{x[0]} = \"#{x[0]}\";" %>
+    <% section = @items_coll[x[0]]
+       section.each do |item| %>
+static const char* lpsz<%= "#{x[0]}#{item[1]} = \"#{x[0]}#{item[1]}\";" %>
+  <% end %>
+<% end %>
+
+
+//! constructor
+<%= @nameClass %>::<%= @nameClass %>()
+{
+}
+
+<% @sect_coll.each do |x| %>
+<%= @nameClass %>::<%= "#{x[0]}::#{x[0]}()" %>
+{
+  <% section = @items_coll[x[0]]
+       section.each do |item| %>
+  <% item[2] = "\"#{item[2]}\"" if item[0] == "STRING" %>
+  <%= "#{item[1]} = #{item[2]};" %>
+  <% end %>
+}
+<% end %>
+
+//! Write the object <%= @globalObj %> in the ini file
+void Space<%= @nameClass %>::WriteProfile(const char* strIniFileName)
+{
+  ini_fd_t  m_pIni = ini_open(strIniFileName, "w", "#");
+  if (m_pIni == 0)
+       return;
+       
+  <% @sect_coll.each do |x| %>
+    <% section = @items_coll[x[0]]
+       section.each do |item| %>
+  ini_locateHeading(m_pIni, lpsz<%= "#{x[0]}" %>);
+  ini_locateKey(m_pIni, lpsz<%= "#{x[0]}#{item[1]}" %>);
+      <% if item[0] == "STRING"%> 
+          ini_writeString(m_pIni, <%= "#{@globalObj}.#{x[1]}.#{item[1]}.c_str()" %>);
+      <% else %>
+          ini_writeInt(m_pIni, <%= "#{@globalObj}.#{x[1]}.#{item[1]}" %>);
+      <% end %>
+    <% end %>
+  <% end %>
+  ini_close(m_pIni);
+}
+
+//! Read the object <%= @globalObj %> from the ini file
+void Space<%= @nameClass %>::GetProfile(const char* strIniFileName)
+{
+  ini_fd_t  m_pIni = ini_open(strIniFileName, "r", "#");
+  int iVal;
+  char buff[2048];
+  
+  <% @sect_coll.each do |x| %>
+    <% section = @items_coll[x[0]]
+       section.each do |item| %>
+      <% if item[0] == "STRING"%>      
+          strcpy(buff, <%= "#{item[2]}" %>);
+          if (m_pIni)
+          {
+            ini_locateHeading(m_pIni, lpsz<%= "#{x[0]}" %>);
+            ini_locateKey(m_pIni, lpsz<%= "#{x[0]}#{item[1]}" %>);
+            ini_readString(m_pIni, buff, 2048);
+          }
+            
+      <% else %>
+          iVal = <%= item[2] %>;
+          if (m_pIni)
+          {
+            ini_locateHeading(m_pIni, lpsz<%= "#{x[0]}" %>);
+            ini_locateKey(m_pIni, lpsz<%= "#{x[0]}#{item[1]}" %>);
+            ini_readInt(m_pIni, &iVal);
+          }
+          <%= "#{@globalObj}.#{x[1]}.#{item[1]} =  iVal; "%>
+      <% end %>
+    <% end %>
+  <% end %>
+  
+  
+  if (m_pIni)
+  {
+     ini_close(m_pIni);
+  }
+}
+
+
+
+
+

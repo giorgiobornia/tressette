@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TreClientVs6", "TreClientVs6.vcproj", "{0807F7C4-9160-4EA6-BCAD-E7DFCEBF21B1}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Tressette_Installer", "Tressette_Installer\Tressette_Installer.vdproj", "{1AF08361-B8CC-42CF-A15D-637255EA7ECB}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GfxWidtget3", "..\GfxWidtget3\GfxWidtget3.vcproj", "{CE3F06F4-018E-4044-856F-87A9FA79CA39}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0807F7C4-9160-4EA6-BCAD-E7DFCEBF21B1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0807F7C4-9160-4EA6-BCAD-E7DFCEBF21B1}.Debug|Win32.Build.0 = Debug|Win32
+		{0807F7C4-9160-4EA6-BCAD-E7DFCEBF21B1}.Release|Win32.ActiveCfg = Release|Win32
+		{0807F7C4-9160-4EA6-BCAD-E7DFCEBF21B1}.Release|Win32.Build.0 = Release|Win32
+		{1AF08361-B8CC-42CF-A15D-637255EA7ECB}.Debug|Win32.ActiveCfg = Debug
+		{1AF08361-B8CC-42CF-A15D-637255EA7ECB}.Release|Win32.ActiveCfg = Release
+		{CE3F06F4-018E-4044-856F-87A9FA79CA39}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CE3F06F4-018E-4044-856F-87A9FA79CA39}.Debug|Win32.Build.0 = Debug|Win32
+		{CE3F06F4-018E-4044-856F-87A9FA79CA39}.Release|Win32.ActiveCfg = Release|Win32
+		{CE3F06F4-018E-4044-856F-87A9FA79CA39}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

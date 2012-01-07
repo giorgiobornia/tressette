@@ -1,0 +1,21 @@
+[OPTIONS]
+Auto TOC=9
+Compatibility=1.1 or later
+Compiled file=tre.chm
+Contents file=toc.hhc
+Default Window=main
+Default topic=tresset.html
+Display compile progress=No
+Full-text search=Yes
+Language=0x809 Englisch (Groﬂbritannien)
+Title=Tressette
+
+[WINDOWS]
+main="Tressette","toc.hhc",,"tresset.html","tresset.html",,,,,0x23420,,0x387e,,,,,,,,0
+
+
+[FILES]
+tresset.html
+
+[INFOTYPES]
+

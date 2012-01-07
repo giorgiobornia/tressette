@@ -1,0 +1,56 @@
+// <%= "#{@nameClass}.h" %>
+// <%= @comment %>
+// Automatic class header file generated with ruby template settings_expat_h.rtemp
+// Please don't change me manually, but use code generator
+
+
+#ifndef   <%= @define  %>
+#define   <%= @define  %>  
+
+#include <string>
+
+namespace Space<%= @nameClass %>
+{
+  typedef struct stUserData
+  {
+    STRING* pStringValue;
+    int*    pIntValue;
+    BOOL    bIsString;
+    BOOL    bCopyData;
+  }XML_MYUSERDATA;
+
+  class <%= @nameClass %>
+  {
+    private:
+      BOOL        m_isUsingXmlFile;
+    public:
+      <%= @nameClass %>();
+      BOOL IsUsingXmlFile(){return m_isUsingXmlFile;}
+      void   SetIsUsingXmlFile(BOOL val){m_isUsingXmlFile = val;}
+      <% @sect_coll.each do |x| %>
+      class <%= x[0] %>
+      {
+        public:
+            <%= x[0] %>();
+            <% section = @items_coll[x[0]] 
+               section.each do |item| %>
+            //!<%= "#{item[3]}" %>
+            <%= "#{item[0]} #{item[1]};" %>
+              <% end %>
+      };
+    public:
+      <%= "#{x[0]} #{x[1]};" %>
+      <% end %>
+    
+  };
+
+  //! write settings in the xml file
+  void    WriteProfile(const char* lpsFileName);
+  //! retrieves setting from xml file
+  void    GetProfile(const char* lpsFileName);
+    
+};//end namespace
+
+extern Space<%= @nameClass %>::<%= @nameClass %> <%= @globalObj %>;
+
+#endif

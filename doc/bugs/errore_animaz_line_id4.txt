@@ -1,0 +1,2 @@
+STATUS: FIXED 21.02.06
+Quando si gioca una carta, la traiettoria dell'animazione non è rettilinea

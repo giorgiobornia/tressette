@@ -1,0 +1,108 @@
+// <%= "#{@nameClass}.cpp" %>
+// <%= @comment %>
+// Automatic class implementation file generated with ruby template
+
+#include "StdAfx.h"
+#include "<%= "#{@nameClass}.h" %>"
+#include "win_type_global.h"
+#include "regkey.h"
+
+using namespace Space<%= @nameClass %>;
+
+// global object
+<%= @nameClass %> <%= @globalObj %>;
+<% @sect_coll.each do |x| %>
+static const char* lpsz<%= "#{x[0]} = \"#{x[0]}\";" %>
+    <% section = @items_coll[x[0]]
+       section.each do |item| %>
+static const char* lpsz<%= "#{x[0]}#{item[1]} = \"#{x[0]}#{item[1]}\";" %>
+  <% end %>
+<% end %>
+
+
+//! constructor
+<%= @nameClass %>::<%= @nameClass %>()
+{
+}
+
+<% @sect_coll.each do |x| %>
+<%= @nameClass %>::<%= "#{x[0]}::#{x[0]}()" %>
+{
+  <% section = @items_coll[x[0]]
+       section.each do |item| %>
+  <% item[2] = "\"#{item[2]}\"" if item[0] == "STRING" %>
+  <%= "#{item[1]} = #{item[2]};" %>
+  <% end %>
+}
+<% end %>
+
+//! Write the object <%= @globalObj %> in the registry
+void Space<%= @nameClass %>::WriteProfile(const char* strKeyRoot)
+{
+  RegistryKey RegKey;
+  LONG lRes;
+  char buff[1024];
+  <% @sect_coll.each do |x| %>
+  strcpy(buff, strKeyRoot);
+  strcat(buff, "\\");
+  strcat(buff, lpsz<%= "#{x[0]}" %>);
+  lRes = RegKey.Open(HKEY_CURRENT_USER, buff);  
+  if (lRes)
+  {
+    lRes = RegKey.Create(HKEY_CURRENT_USER, buff);
+  }
+  if (!lRes)
+  {
+    <% section = @items_coll[x[0]]
+       section.each do |item| %>
+      <% if item[0] == "STRING" 
+         reg_method = "setRegStringValue"  %>
+    RegKey.<%= "#{reg_method}(#{@globalObj}.#{x[1]}.#{item[1]}.c_str(),lpsz#{x[0]}#{item[1]});"%>
+      <% else
+        reg_method = "setRegDWordValue" %>
+    RegKey.<%= "#{reg_method}(#{@globalObj}.#{x[1]}.#{item[1]},lpsz#{x[0]}#{item[1]});"%>
+      <% end %>
+    <% end %>
+  }
+  <% end %>
+}
+
+//! Read the object <%= @globalObj %> from the registry
+void Space<%= @nameClass %>::GetProfile(const char* strKeyRoot)
+{
+  RegistryKey RegKey;
+  LONG lRes;
+  char buff[1024];
+  lRes = RegKey.Open(HKEY_CURRENT_USER, strKeyRoot);  
+  if (!lRes)
+  {
+  <% @sect_coll.each do |x| %>
+    strcpy(buff, strKeyRoot);
+    strcat(buff, "\\");
+    strcat(buff, lpsz<%= "#{x[0]}" %>);
+    RegKey.Close();
+    lRes = RegKey.Open(HKEY_CURRENT_USER, buff);  
+    if (!lRes)
+    {
+    <% section = @items_coll[x[0]]
+       section.each do |item| %>
+      <% reg_method = "getRegDWordValue"
+         reg_method = "getRegStringValue" if item[0] == "STRING" %>
+      <%= "#{@globalObj}.#{x[1]}.#{item[1]} = RegKey.#{reg_method}(#{item[2]},lpsz#{x[0]}#{item[1]});"%>
+    <% end %>
+    }
+    else
+    {
+      RegKey.Create(HKEY_CURRENT_USER, buff); 
+    }
+  <% end %>
+  }
+  else
+  {
+    RegKey.Create(HKEY_CURRENT_USER, strKeyRoot); 
+  }
+  RegKey.Close();
+}
+
+
+

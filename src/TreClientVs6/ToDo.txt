@@ -1,0 +1,40 @@
+== 30-03-06
+Inserire la variante Chitarrella latina
+
+== 05-03-06
+Finire la variante romana. Chitarella [ok].
+
+== 01-03-06
+Algoritmo non è ancora ottimale. 
+- Sulla presa sicura del socio, l'altro socio non gioca gli assi.
+- Sui segnali dei giocatori si devono settare le carte random a modo
+- Se il socio dichiara napola, bisogna uscire nel segno del socio. 
+L'avversario invece mai. Invece capita proprio il contrario.
+
+
+== 16-02-06
+testPlayAsSecond_err2_alpahbeta non passa, commentati 2 test in algdefault solo per testare più alla svelta.
+[ok]
+
+== 08-02-06
+Manca la funzione playAsNotFirst e tutti i test ad essa riferiti. La funzione playAsFirst è [ok]
+Tutti i test cxx sono [ok]
+
+
+== 31.01.06
+Stato algoritmo: Le funzioni playAsNotFirst e playAsFirst non sono complete. 
+Alphabeta algoritmo è integrato e funzionante.
+Tutti i test cxx sono [ok]
+
+== Altri task
+
+(no next release)Modalità standard: avversario accusa sugli scarti, non ammesso.
+
+(no next release)Quando compare la pop-up per la scelta del segnale, 
+si dovrebbe alzare leggermente la carta che causa il segnale.
+
+Algoritmo di selezione double analysis.
+
+Ordine delle carte in mano non è decrescente 
+
+

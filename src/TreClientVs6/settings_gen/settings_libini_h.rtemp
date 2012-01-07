@@ -1,0 +1,42 @@
+// <%= "#{@nameClass}.h" %>
+// <%= @comment %>
+// Automatic class header file generated with ruby template
+
+#ifndef   <%= @define  %>
+#define   <%= @define  %>  
+
+#include <string>
+
+namespace Space<%= @nameClass %>
+{
+  class <%= @nameClass %>
+  {
+    public:
+      <%= @nameClass %>();
+      <% @sect_coll.each do |x| %>
+      class <%= x[0] %>
+      {
+        public:
+            <%= x[0] %>();
+            <% section = @items_coll[x[0]] 
+               section.each do |item| %>
+            //!<%= "#{item[3]}" %>
+            <%= "#{item[0]} #{item[1]};" %>
+              <% end %>
+      };
+    public:
+      <%= "#{x[0]} #{x[1]};" %>
+      <% end %>
+  };
+
+  //! write settings in the ini file using libini
+  void    WriteProfile(const char* strIniFileName);
+  //! retrieves setting from the ini file using libini
+  void    GetProfile(const char* strIniFileName);
+    
+};//end namespace
+
+extern Space<%= @nameClass %>::<%= @nameClass %> <%= @globalObj %>;
+
+#endif
+

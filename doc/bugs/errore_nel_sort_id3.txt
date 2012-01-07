@@ -1,0 +1,3 @@
+STATUS: FIXED 21.02.06
+
+Le carte vengono messe in ordine per seme ma non per valore
