@@ -120,12 +120,8 @@ C:/Projects/cpp/tressette_sf/src/TreClientVs6/tre.ico
 C:/Projects/cpp/tressette_sf/src/TreClientVs6/tre.rc
 C:/Projects/cpp/tressette_sf/src/TreClientVs6/TreClientVs6.dsp
 C:/Projects/cpp/tressette_sf/src/TreClientVs6/TreClientVs6.dsw
-C:/Projects/cpp/tressette_sf/src/TreClientVs6/TreClientVs6.ncb
 C:/Projects/cpp/tressette_sf/src/TreClientVs6/TreClientVs6.sln
-C:/Projects/cpp/tressette_sf/src/TreClientVs6/TreClientVs6.suo
 C:/Projects/cpp/tressette_sf/src/TreClientVs6/TreClientVs6.vcproj
-C:/Projects/cpp/tressette_sf/src/TreClientVs6/Tressette_Installer/firma_installer.bat
-C:/Projects/cpp/tressette_sf/src/TreClientVs6/Tressette_Installer/Tressette_Installer.vdproj
 C:/Projects/cpp/tressette_sf/src/TreClientVs6/settings_gen/gensettings.rb
 C:/Projects/cpp/tressette_sf/src/TreClientVs6/settings_gen/libini_settings_cpp.xsl
 C:/Projects/cpp/tressette_sf/src/TreClientVs6/settings_gen/libini_settings_h.xsl
@@ -291,7 +287,6 @@ C:/Projects/cpp/tressette_sf/src/gfx_widgets/StdAfx.cpp
 C:/Projects/cpp/tressette_sf/src/gfx_widgets/StdAfx.h
 C:/Projects/cpp/tressette_sf/src/GfxWidtget3/dllmain.cpp
 C:/Projects/cpp/tressette_sf/src/GfxWidtget3/GfxWidtget3.vcproj
-C:/Projects/cpp/tressette_sf/src/GfxWidtget3/GfxWidtget3.vcproj.zagor.igor.user
 C:/Projects/cpp/tressette_sf/src/GfxWidtget3/ReadMe.txt
 C:/Projects/cpp/tressette_sf/src/GfxWidtget3/stdafx.cpp
 C:/Projects/cpp/tressette_sf/src/GfxWidtget3/stdafx.h
@@ -301,14 +296,7 @@ C:/Projects/cpp/tressette_sf/src/GfxWidtget2/ReadMe.txt
 C:/Projects/cpp/tressette_sf/src/GfxWidtget2/Stdafx.cpp
 C:/Projects/cpp/tressette_sf/src/GfxWidtget2/Stdafx.h
 C:/Projects/cpp/tressette_sf/out/GfxWidtget3.dll
-C:/Projects/cpp/tressette_sf/out/GfxWidtget3.exp
 C:/Projects/cpp/tressette_sf/out/GfxWidtget3.lib
-C:/Projects/cpp/tressette_sf/out/GfxWidtget3.pdb
-C:/Projects/cpp/tressette_sf/out/GfxWidtget3_d.dll
-C:/Projects/cpp/tressette_sf/out/GfxWidtget3_d.exp
-C:/Projects/cpp/tressette_sf/out/GfxWidtget3_d.ilk
-C:/Projects/cpp/tressette_sf/out/GfxWidtget3_d.lib
-C:/Projects/cpp/tressette_sf/out/GfxWidtget3_d.pdb
 C:/Projects/cpp/tressette_sf/out/jpeg.dll
 C:/Projects/cpp/tressette_sf/out/libexpat.dll
 C:/Projects/cpp/tressette_sf/out/libogg-0.dll
@@ -325,11 +313,6 @@ C:/Projects/cpp/tressette_sf/out/SDL_mixer.dll
 C:/Projects/cpp/tressette_sf/out/SDL_net.dll
 C:/Projects/cpp/tressette_sf/out/SDL_ttf.dll
 C:/Projects/cpp/tressette_sf/out/smpeg.dll
-C:/Projects/cpp/tressette_sf/out/trace_coregame.txt
-C:/Projects/cpp/tressette_sf/out/tre.exe
-C:/Projects/cpp/tressette_sf/out/tressette.xml
-C:/Projects/cpp/tressette_sf/out/tre_d.exe
-C:/Projects/cpp/tressette_sf/out/tre_d.ilk
 C:/Projects/cpp/tressette_sf/out/zlib.dll
 C:/Projects/cpp/tressette_sf/out/data/skin/checked.png
 C:/Projects/cpp/tressette_sf/out/data/skin/unchecked.png
@@ -439,4 +422,3 @@ C:/Projects/cpp/tressette_sf/doc/bugs/errore_animaz_line_id4.txt
 C:/Projects/cpp/tressette_sf/doc/bugs/errore_durantela_giocata.txt
 C:/Projects/cpp/tressette_sf/doc/bugs/errore_durantela_giocata_id2.txt
 C:/Projects/cpp/tressette_sf/doc/bugs/errore_nel_sort_id3.txt
-C:/Projects/cpp/tressette_sf/.settings/org.eclipse.cdt.core.prefs
