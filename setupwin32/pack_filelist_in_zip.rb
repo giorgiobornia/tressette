@@ -7,12 +7,12 @@
 require 'zip/zip' 
 
 script_dir = File.dirname(__FILE__)
-checkout_dir = "G:/Projects/eVision/tressetteCVS"
+checkout_dir = "C:/Projects/cpp/tressette_sf"
 root_dir = checkout_dir + "/" + "out"
 input_file_list = "out_file_list.txt"
 input_src_file_list = "src_file_list.txt"
-out_zip = "37_ver_0_69.zip"
-src_zip = "37_ver_0_69_src.zip"
+out_zip = "37_ver_0_7_3.zip"
+src_zip = "37_ver_0_7_3_src.zip"
 
 ##
 # Class used to crate a zip archive from a file list

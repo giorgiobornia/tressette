@@ -1,11 +1,17 @@
 == tressette a 4 giocatori
 Il programma tre.exe é una simulazione del gioco del tressette a 4 giocatori.
+Il programma è stato creato per divertimento da Igor Sarzi Sartori e rilasciato
+sotto licenza open source GPL2.
+Il programma è stato sviluppato nel sistema operativo windows 7, anche se nel passato
+è stato compilato sotto linux, precisamente in Ubuntu e FreeBsd.
 
-== Versione 0.70
+== Versione 0.7.3
+Controllo dei sorgenti vis SVN
 Corretto bug dichiarazione 4 assi
 Corretto apertura file guida in windows 7
 Progetto per visual studio 8
-Setup msi
+Setup in formato msi
+Musica ed effetti sonori funzionanti in windows 7
 
 == Versione 0.69
 Corretto bug scritta con la vittoria
@@ -40,6 +46,9 @@ Prima versione alpha pubblicata. L'algoritmo di gioco implementato è casuale.
 
 == Autore
 Igor Sarzi Sartori
-www.invido.it
-http://sourceforge.net/projects/tressette
-6colpiunbucosolo@gmx.net 
+Home page: www.invido.it
+Email: 6colpiunbucosolo@gmx.net 
+Se il programma ti è piaciuto o vorresti vedere nuove funzioni,
+considera una donazione (http://sourceforge.net/donate/index.php?group_id=155065). 
+Maggiori informazioni su:
+http://invido.it/progetti/tressette_progetto.html 

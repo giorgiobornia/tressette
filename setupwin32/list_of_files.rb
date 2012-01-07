@@ -2,12 +2,12 @@
 
 GEN_SRC_LIST = 1
 
-start_dir = "G:/Projects/eVision/tressetteCVS/out"
-out_file_list = "G:/Projects/eVision/tressetteCVS/setupwin32/out_file_list.txt"
+start_dir = "C:/Projects/cpp/tressette_sf/out"
+out_file_list = "C:/Projects/cpp/tressette_sf/setupwin32/out_file_list.txt"
 
 if GEN_SRC_LIST == 1
-	start_dir = "G:/Projects/eVision/tressetteCVS"
-	out_file_list = "G:/Projects/eVision/tressetteCVS/setupwin32/src_file_list.txt"
+	start_dir = "C:/Projects/cpp/tressette_sf"
+	out_file_list = "C:/Projects/cpp/tressette_sf/setupwin32/src_file_list.txt"
 end
 
 ##
