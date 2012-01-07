@@ -1,9 +1,11 @@
 # We want generate a list of file to pack into a zip
 
-GEN_SRC_LIST = 1
+script_dir = File.dirname(__FILE__)
 
-start_dir = "C:/Projects/cpp/tressette_sf/out"
-out_file_list = "C:/Projects/cpp/tressette_sf/setupwin32/out_file_list.txt"
+GEN_SRC_LIST = 0
+
+start_dir = File.expand_path(File.join(script_dir, '../out'))
+out_file_list = File.expand_path(File.join(script_dir, "out_file_list.txt"))
 
 if GEN_SRC_LIST == 1
 	start_dir = "C:/Projects/cpp/tressette_sf"
@@ -52,16 +54,17 @@ class FileScanDir
 end
 
 if $0 == __FILE__
-   fscd = FileScanDir.new
-   fscd.add_dir_filter( ["CVS", ".svn", "Debug", "Release", "setupwin32"] )
-   fscd.scan_dir(start_dir)
-   fscd.result_list.each{|f| puts f}
-   File.open(out_file_list, "w") do |file|
-   	 fscd.result_list.each do |item| 
-       file << item
-       file << "\n"
-     end
-     puts "File list created #{out_file_list}"
-   end
+  puts "Generate #{out_file_list} starting on #{start_dir}"
+  fscd = FileScanDir.new
+  fscd.add_dir_filter( ["CVS", ".svn", "Debug", "Release", "setupwin32"] )
+  fscd.scan_dir(start_dir)
+  fscd.result_list.each{|f| puts f}
+  File.open(out_file_list, "w") do |file|
+    fscd.result_list.each do |item| 
+    file << item
+    file << "\n"
+  end
+  puts "File list created #{out_file_list}"
+  end
 end
 
