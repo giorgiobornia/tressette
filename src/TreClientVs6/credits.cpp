@@ -39,9 +39,9 @@
 
 
 char * credit_text[] = {
-  "-PROJECT",  /* '-' at beginning makes highlighted: */
+  "-PROJECT LEADER",  /* '-' at beginning makes highlighted: */
   "IGOR SARZI SARTORI",
-  "",
+  "www.invido.it",
   "",
   "",
   "",
@@ -52,7 +52,6 @@ char * credit_text[] = {
   "",
   "-SUPPORTO",
   "DOMENICO STARNA",
-  "PAOLO VERZELLA",
   "",
   "",
   "",

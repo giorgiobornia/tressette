@@ -1,6 +1,6 @@
 /*
     Tressette
-    Copyright (C) 2005  Igor Sarzi Sartori
+    Copyright (C) 2005-2012  Igor Sarzi Sartori
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Library General Public
@@ -38,9 +38,6 @@
 	#include <direct.h>
 #endif
 
-#ifdef INTEL_APPUP
-	#include "adpcppf.h"
-#endif
 
 #include "ErrorMsg.h"
 
@@ -56,29 +53,6 @@ int main(int argc, char *argv[])
 {
  
     cEngineApp app;
-
-#ifdef INTEL_APPUP
-	Application * myApplication = NULL;
-	const ApplicationId myApplicationID(0x799A0A8F,0xFFB14243,0x9A979D1C,0x463AAD75);
-	try
-	{
-		//replace ADP_DEBUG_APPLICATIONID with Production Application ID
-		// Nella versione debug il debugger di intel deve andare (altrimenti errore 2), nella release
-		// anche se va si becca un non authorized (errore 6)
-#ifdef _DEBUG
-		//myApplication = new Application(ADP_DEBUG_APPLICATIONID);
-#else
-		myApplication = new Application(myApplicationID);
-#endif
-		cout << "Application Authorized to run." << endl;
-	}
-	catch (AdpErrorException& e) {
-		cout << "Caught exception in INTEL application: " << e.code() << endl;
-        ::MessageBox(NULL, "The application is not authorized to run on this machine. Please uninstall it and re-download from Intel AppUp(TM) Software Client. If the problem persist, visit http://www.intel.com/support/go/appup/support.htm for assistance.", "Application Error", MB_OK);  
-		exit(EXIT_FAILURE);
-	}
-
-#endif
 
 #ifdef WIN32
 
@@ -100,13 +74,6 @@ int main(int argc, char *argv[])
         // to be removed: goto play game
         //app.PlayGame();
         //app.ShowOptions();
-#ifdef INTEL_APPUP
-		if(myApplication != NULL)
-		{
-			delete myApplication;
-			myApplication = NULL;
-		}
-#endif
 
 
     }
@@ -117,13 +84,6 @@ int main(int argc, char *argv[])
         ::MessageBox(NULL, "Initialization Error, look on stderr.txt for more informations\nThe application is not correctly installed", "Application Error", MB_OK); 
 #endif
         std::cerr << "Application initialization error: " << err.strErrMsg.c_str() << std::endl;   
-#ifdef INTEL_APPUP
-		if(myApplication != NULL)
-		{
-			delete myApplication;
-			myApplication = NULL;
-		}
-#endif
 
         exit(EXIT_FAILURE);
     }
@@ -135,13 +95,6 @@ int main(int argc, char *argv[])
         ::MessageBox(NULL, errBuffer, "Application Error", MB_OK | MB_ICONERROR); 
 #endif
         std::cerr << "Application  error: " << err.strErrMsg.c_str() << std::endl;   
-#ifdef INTEL_APPUP
-		if(myApplication != NULL)
-		{
-			delete myApplication;
-			myApplication = NULL;
-		}
-#endif
 
         exit(EXIT_FAILURE);
 

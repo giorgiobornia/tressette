@@ -44,8 +44,8 @@
 #include "ErrorMsg.h"
 
 static const char* lpszUrlHome = "http://www.invido.it";
-static const char* lpszMsgUrl = "Go to www.invido.it";
-static const char* lpszVersion = "Tressette ver. 0.7.3";
+static const char* lpszMsgUrl = "Creato da www.invido.it";
+static const char* lpszVersion = "Tressette ver. 0.7.4";
 static const char* lpszIniFontVera = "data/font/vera.ttf"; 
 
 //////////////////////////////////////////////////////////////////////

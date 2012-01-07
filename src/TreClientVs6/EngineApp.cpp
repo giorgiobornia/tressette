@@ -166,28 +166,15 @@ void cEngineApp::loadProfile()
     {
         // settings di default non caricati dal file
 #ifdef WIN32
-        
-            // Codice solo per vista on win 7, ma non in xp
-            /*WCHAR localeName[LOCALE_NAME_MAX_LENGTH]={0};
-            int byRead = ::GetUserDefaultLocaleName(localeName, ARRSIZE(localeName));
-            if(byRead > 0)
-            {
-                std::basic_string<WCHAR> strLocal = localeName;
-                int pos = strLocal.find(L"it");
-                if(pos == -1)
-                {
-                    g_Options.All.iLanguageID = 2;
-                }
-            }*/
-        
+        // la lingua di default viene stabilita dall'sistema operativo dell'utente   
         LCID lcid = ::GetUserDefaultLCID();
         if(lcid == 1040 || lcid == 2064)
         {
-            g_Options.All.iLanguageID = 0;
+            g_Options.All.iLanguageID = cLanguages::LANG_ITA;
         }
         else
         {
-            g_Options.All.iLanguageID = 2;
+            g_Options.All.iLanguageID = cLanguages::LANG_ENG;
         }
        
 

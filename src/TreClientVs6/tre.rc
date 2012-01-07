@@ -71,12 +71,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Invido.it"
             VALUE "FileDescription", "Tressette"
-            VALUE "FileVersion", "0, 7, 3, 0"
+            VALUE "FileVersion", "0, 7, 4, 0"
             VALUE "InternalName", "Tressette"
             VALUE "LegalCopyright", "Copyright © 2011"
             VALUE "OriginalFilename", "Tressette.exe"
             VALUE "ProductName", "Tressette"
-            VALUE "ProductVersion", "0, 7, 3, 0"
+            VALUE "ProductVersion", "0, 7, 4, 0"
         END
     END
     BLOCK "VarFileInfo"
