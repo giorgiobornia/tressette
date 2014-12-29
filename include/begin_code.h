@@ -31,6 +31,7 @@
 #endif
 #define _begin_code_h
 
+
 /* Make sure the correct platform symbols are defined */
 #if !defined(WIN32) && defined(_WIN32)
 #define WIN32
@@ -38,27 +39,28 @@
 
 /* Some compilers use a special export keyword */
 #ifndef DECLSPEC
-# ifdef __BEOS__
-#  if defined(__GNUC__)
-#   define DECLSPEC	__declspec(dllexport)
-#  else
-#   define DECLSPEC	__declspec(export)
-#  endif
-# else
-# ifdef WIN32
-#  ifdef __BORLANDC__
-#   ifdef BUILD_SDL
-#    define DECLSPEC __declspec(dllexport)
-#   else
-#    define DECLSPEC __declspec(dllimport)
-#   endif
-#  else
-#   define DECLSPEC	__declspec(dllexport)
-#  endif
-# else
-#  define DECLSPEC
-# endif
-# endif
+#   define DECLSPEC  
+// # ifdef __BEOS__
+// #  if defined(__GNUC__)
+// #   define DECLSPEC	__declspec(dllexport)
+// #  else
+// #   define DECLSPEC	__declspec(export)
+// #  endif
+// # else
+// # ifdef WIN32
+// #  ifdef __BORLANDC__
+// #   ifdef BUILD_SDL
+// #    define DECLSPEC __declspec(dllexport)
+// #   else
+// #    define DECLSPEC __declspec(dllimport)
+// #   endif
+// #  else
+// #   define DECLSPEC	__declspec(dllexport)
+// #  endif
+// # else
+// #  define DECLSPEC
+// # endif
+// # endif
 #endif
 
 /* By default SDL uses the C calling convention */

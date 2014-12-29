@@ -51,7 +51,7 @@ public:
     virtual ~cImageLinkGfx();
 
     virtual void   Draw(SDL_Surface*  pScreen);
-    virtual void   cImageLinkGfx::Init(SDL_Rect* pRect, SDL_Surface*  pScreen, LPCSTR imageFile, LPCSTR imageFileOver,  int iButID);
+    virtual void   Init(SDL_Rect* pRect, SDL_Surface*  pScreen, LPCSTR imageFile, LPCSTR imageFileOver,  int iButID);
 
 private:
     void    CheckErrorLoadImage(SDL_Surface* pImgSrf, LPCSTR imageFile);

@@ -51,7 +51,7 @@ am_tressettetux_OBJECTS = main.$(OBJEXT) EngineApp.$(OBJEXT) \
 	OptionDeckGfx.$(OBJEXT) OptionGameGfx.$(OBJEXT) \
 	OptionGfx.$(OBJEXT) cBalloonGfx.$(OBJEXT) cButtonGfx.$(OBJEXT) \
 	cCheckBoxGfx.$(OBJEXT) cComboGfx.$(OBJEXT) cEditGfx.$(OBJEXT) \
-	cLabelGfx.$(OBJEXT) cLabelLinkGfx.$(OBJEXT) \
+	cLabelGfx.$(OBJEXT) cLabelLinkGfx.$(OBJEXT) cImageLinkGfx.$(OBJEXT) \
 	cMesgBoxGfx.$(OBJEXT) cPopUpMenuGfx.$(OBJEXT) \
 	cProgressBarGfx.$(OBJEXT) gfx_util.$(OBJEXT) \
 	AlgSupport.$(OBJEXT) cAlgDefault.$(OBJEXT) \
@@ -216,6 +216,7 @@ tressettetux_SOURCES = main.cpp \
             ../gfx_widgets/cEditGfx.cpp\
             ../gfx_widgets/cLabelGfx.cpp\
             ../gfx_widgets/cLabelLinkGfx.cpp\
+            ../gfx_widgets/cImageLinkGfx.cpp\
             ../gfx_widgets/cMesgBoxGfx.cpp\
             ../gfx_widgets/cPopUpMenuGfx.cpp\
             ../gfx_widgets/cProgressBarGfx.cpp\
@@ -349,6 +350,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cHightScoreMgr.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cLabelGfx.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cLabelLinkGfx.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cImageLinkGfx.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cMano.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cMatchPoints.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cMazzo.Po@am__quote@
@@ -482,6 +484,24 @@ cLabelLinkGfx.obj: ../gfx_widgets/cLabelLinkGfx.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../gfx_widgets/cLabelLinkGfx.cpp' object='cLabelLinkGfx.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o cLabelLinkGfx.obj `if test -f '../gfx_widgets/cLabelLinkGfx.cpp'; then $(CYGPATH_W) '../gfx_widgets/cLabelLinkGfx.cpp'; else $(CYGPATH_W) '$(srcdir)/../gfx_widgets/cLabelLinkGfx.cpp'; fi`
+
+
+
+cImageLinkGfx.o: ../gfx_widgets/cImageLinkGfx.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT cImageLinkGfx.o -MD -MP -MF $(DEPDIR)/cImageLinkGfx.Tpo -c -o cImageLinkGfx.o `test -f '../gfx_widgets/cImageLinkGfx.cpp' || echo '$(srcdir)/'`../gfx_widgets/cImageLinkGfx.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/cImageLinkGfx.Tpo $(DEPDIR)/cImageLinkGfx.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../gfx_widgets/cImageLinkGfx.cpp' object='cImageLinkGfx.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o cImageLinkGfx.o `test -f '../gfx_widgets/cImageLinkGfx.cpp' || echo '$(srcdir)/'`../gfx_widgets/cImageLinkGfx.cpp
+
+cImageLinkGfx.obj: ../gfx_widgets/cImageLinkGfx.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT cImageLinkGfx.obj -MD -MP -MF $(DEPDIR)/cImageLinkGfx.Tpo -c -o cImageLinkGfx.obj `if test -f '../gfx_widgets/cImageLinkGfx.cpp'; then $(CYGPATH_W) '../gfx_widgets/cImageLinkGfx.cpp'; else $(CYGPATH_W) '$(srcdir)/../gfx_widgets/cImageLinkGfx.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/cImageLinkGfx.Tpo $(DEPDIR)/cImageLinkGfx.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../gfx_widgets/cImageLinkGfx.cpp' object='cImageLinkGfx.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o cImageLinkGfx.obj `if test -f '../gfx_widgets/cImageLinkGfx.cpp'; then $(CYGPATH_W) '../gfx_widgets/cImageLinkGfx.cpp'; else $(CYGPATH_W) '$(srcdir)/../gfx_widgets/cImageLinkGfx.cpp'; fi`
+
+
 
 cMesgBoxGfx.o: ../gfx_widgets/cMesgBoxGfx.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT cMesgBoxGfx.o -MD -MP -MF $(DEPDIR)/cMesgBoxGfx.Tpo -c -o cMesgBoxGfx.o `test -f '../gfx_widgets/cMesgBoxGfx.cpp' || echo '$(srcdir)/'`../gfx_widgets/cMesgBoxGfx.cpp

@@ -28,6 +28,14 @@
 #ifndef _AIGLOBAL_TYPE_H
 #define _AIGLOBAL_TYPE_H
 
+
+
+#define UINT unsigned int
+
+
+
+
+
 #if _MSC_VER > 1000
     #include <StdAfx.h>
 #endif
@@ -35,7 +43,7 @@
 #ifdef TRE_LIBRARY_EXPORT
     #define DLL_EXPORTIMPORT   __declspec( dllexport )
 #else
-    #define DLL_EXPORTIMPORT   __declspec( dllimport )
+    #define DLL_EXPORTIMPORT   //__declspec( dllimport )
 #endif
 
 #ifdef USEDIALOGTRACE
@@ -55,6 +63,7 @@
     #include <vector>
     #include <deque>
     #include <string>
+    #include <cstring>
 #endif
 
 #ifndef BOOL 

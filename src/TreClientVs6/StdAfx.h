@@ -44,6 +44,30 @@
 
 //{{AFX_INSERT_LOCATION}}
 // Microsoft Visual C++ will insert additional declarations immediately before the previous line.
+#else
+
+
+#include <deque>
+#include <string>
+#include <cstring>
+#include <assert.h>
+#include <stdio.h>
+
+#define APP_WIN_HEIGHT 480
+#define APP_WIN_WIDTH 800
+
+#define OPT_WIN_GAME_WIDTH	500
+#define OPT_WIN_GAME_HEIGHT 390
+
+#define OPT_WIN_DECK_WIDTH	500
+#define OPT_WIN_DECK_HEIGHT 360
+
+#define OPT_WIN_GENERAL_WIDTH	500
+#define OPT_WIN_GENERAL_HEIGHT 420
+
+
 #endif // define WIN32
+
+
 
 #endif // !defined(AFX_STDAFX_H__C0F7C4A2_35059CA33AE__INCLUDED_)

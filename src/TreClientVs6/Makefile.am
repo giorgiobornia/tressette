@@ -35,6 +35,7 @@ tressettetux_SOURCES = main.cpp \
             ../gfx_widgets/cEditGfx.cpp\
             ../gfx_widgets/cLabelGfx.cpp\
             ../gfx_widgets/cLabelLinkGfx.cpp\
+            ../gfx_widgets/cImageLinkGfx.cpp\
             ../gfx_widgets/cMesgBoxGfx.cpp\
             ../gfx_widgets/cPopUpMenuGfx.cpp\
             ../gfx_widgets/cProgressBarGfx.cpp\
