@@ -12,3 +12,5 @@ Makefile
 trace_coregame.txt
 tressette.xml
 tressettetux
+
+*.kdev4
