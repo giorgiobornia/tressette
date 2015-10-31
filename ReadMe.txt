@@ -25,6 +25,10 @@
     
     === HOW TO INSTALL AND RUN
     
+    After cloning the repo, do 
+    
+    git checkout linux
+    
     In opensuse 13.2, run as root:
     
      zypper in libSDL-1_2-0 \
